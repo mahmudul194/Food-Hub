@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodieHub - Pizza Palace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/restaurant.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="ri-restaurant-2-fill"></i></div>
+            FoodieHub
+        </a>
+        
+        <div class="search-bar">
+            <i class="ri-search-line"></i>
+            <input type="text" placeholder="Search for dishes..." class="search-input">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="restaurant.html" class="text-primary font-weight-600">Restaurants</a></li>
+            <li><a href="offers.html">Offers</a></li>
+        </ul>
+        
+        <div class="nav-actions">
+            <div class="icon-btn" onclick="window.location.href='cart.html'"><i class="ri-shopping-cart-2-fill"></i></div>
+            <a href="index.html" class="btn btn-primary" style="padding: 10px 24px;">Sign In</a>
+        </div>
+    </nav>
+
+    <div class="restaurant-container">
+        <!-- Main Content (Left) -->
+        <main class="menu-content">
+            <!-- Restaurant Header -->
+            <div class="restaurant-hero">
+                <img src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=1200&auto=format&fit=crop" alt="Pizza Palace" class="hero-bg">
+                <div class="restaurant-info">
+                    <span class="badge">POPULAR CHOICE</span>
+                    <h1>Pizza Palace</h1>
+                    <p class="meta">Italian • Pizza • 25-35 min • ৳ • <i class="ri-star-fill text-primary"></i> 4.8 (500+ ratings)</p>
+                </div>
+            </div>
+
+            <!-- Menu Categories -->
+            <div class="menu-categories">
+                <button class="menu-chip active"><i class="ri-pie-chart-2-line"></i> Pizza</button>
+                <button class="menu-chip"><i class="ri-restaurant-line"></i> Pasta</button>
+                <button class="menu-chip"><i class="ri-bread-line"></i> Sides</button>
+                <button class="menu-chip"><i class="ri-cup-line"></i> Drinks</button>
+            </div>
+
+            <!-- Menu Section: Pizzas -->
+            <h3 class="section-title">Pizzas</h3>
+            <div class="menu-grid">
+                <!-- Item 1 -->
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=600&auto=format&fit=crop" alt="Margherita" class="item-image">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>Classic Margherita</h4>
+                            <span class="price">৳14.99</span>
+                        </div>
+                        <p class="description">San Marzano tomato sauce, fresh buffalo mozzarella, basil, and extra virgin olive oil.</p>
+                        <button class="btn btn-outline btn-full add-btn" style="border-color: var(--primary-color); color: var(--primary-color);">
+                            <i class="ri-add-line"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=600&auto=format&fit=crop" alt="Pepperoni" class="item-image">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>Double Pepperoni</h4>
+                            <span class="price text-primary">৳16.99</span>
+                        </div>
+                        <p class="description">Loaded with spicy pepperoni, mozzarella, and our signature herbed tomato sauce.</p>
+                        <button class="btn btn-primary btn-full add-btn">
+                            <i class="ri-add-line"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=600&auto=format&fit=crop" alt="Garden Veggie" class="item-image">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>Garden Veggie</h4>
+                            <span class="price">৳15.50</span>
+                        </div>
+                        <p class="description">Bell peppers, mushrooms, onions, black olives, and vine-ripened tomatoes.</p>
+                        <button class="btn btn-primary btn-full add-btn">
+                            <i class="ri-add-line"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?q=80&w=600&auto=format&fit=crop" alt="Truffle Mushroom" class="item-image">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h4>Truffle Mushroom</h4>
+                            <span class="price text-primary">৳18.99</span>
+                        </div>
+                        <p class="description">Wild mushrooms, creamy white sauce, fontina cheese, and truffle oil drizzle.</p>
+                        <button class="btn btn-primary btn-full add-btn">
+                            <i class="ri-add-line"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic menu loaded above -->
+        </main>
+
+        <!-- Sidebar (Cart) -->
+        <aside class="cart-sidebar">
+            <div class="cart-container">
+                <div class="cart-header">
+                    <div class="cart-icon bg-secondary text-primary">
+                        <i class="ri-shopping-cart-2-fill"></i>
+                    </div>
+                    <div>
+                        <h4 style="margin:0; font-size: 1.1rem;">Your Cart</h4>
+                        <p style="color: var(--text-light); font-size: 0.8rem; margin:0;">Pizza Palace</p>
+                    </div>
+                </div>
+
+                <div class="cart-items">
+                    <div class="cart-item">
+                        <div class="item-qty">1</div>
+                        <div class="item-name">Classic Margherita</div>
+                        <div class="item-price">৳14.99</div>
+                    </div>
+                    <div class="cart-item">
+                        <div class="item-qty">1</div>
+                        <div class="item-name">Garlic Breadsticks</div>
+                        <div class="item-price">৳5.99</div>
+                    </div>
+                </div>
+
+                <div class="cart-summary">
+                    <div class="summary-line">
+                        <span>Subtotal</span>
+                        <span style="font-weight: 600;">৳20.98</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Delivery Fee</span>
+                        <span style="color: #10B981; font-weight: 500;">Free</span>
+                    </div>
+                    <div class="summary-line total-line">
+                        <span>Total</span>
+                        <span class="text-primary" style="font-size: 1.4rem;">৳20.98</span>
+                    </div>
+                </div>
+
+                <div class="payment-selector">
+                    <i class="ri-visa-line" style="color: #1A1F71; font-size: 1.5rem;"></i>
+                    <span style="font-size: 0.9rem; margin-left: 8px;">Visa ending in 4242</span>
+                </div>
+
+                <a href="checkout.html" class="btn btn-primary btn-full checkout-btn">
+                    Proceed to Checkout <i class="ri-arrow-right-line" style="margin-left: 8px;"></i>
+                </a>
+                
+                <p class="terms-text">By placing an order, you agree to our Terms of Service.</p>
+            </div>
+        </aside>
+    </div>
+
+    
+
+    <script src="js/api.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/cart-ui.js"></script>
+    <script src="js/restaurant.js"></script>
+
+    <!-- Full Website Footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col brand">
+                <h4><i class="ri-restaurant-2-fill text-primary"></i> FoodHub</h4>
+                <p>Bringing your favorite meals straight to your door. Fast, fresh, and perfectly delicious every time.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="browse.html">Browse Restaurants</a></li>
+                    <li><a href="offers.html">Latest Offers</a></li>
+                    <li><a href="#">Ride with Us</a></li>
+                    <li><a href="#">Add your Restaurant</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2026 FoodHub Bangladesh. All Rights Reserved.</div>
+            <div class="footer-social">
+                <a href="#"><i class="ri-facebook-circle-fill"></i></a>
+                <a href="#"><i class="ri-twitter-x-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

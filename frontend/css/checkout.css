@@ -1,0 +1,148 @@
+/* Checkout specific styles */
+.checkout-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: 40px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+
+.payment-tabs {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.payment-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.payment-tab i {
+    font-size: 1.2rem;
+}
+
+.payment-tab.active {
+    border-color: var(--primary-color);
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+}
+
+.payment-tab.active .check-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.payment-tab:not(.active) .check-icon {
+    display: none;
+}
+
+/* Custom form inputs for checkout to match design */
+.checkout-input {
+    background-color: var(--secondary-color) !important;
+    border: none !important;
+    padding: 16px 20px !important;
+    color: var(--text-dark) !important;
+    font-weight: 500;
+}
+
+.form-input-wrapper .checkout-input {
+    padding-left: 48px !important;
+}
+
+.form-label {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    letter-spacing: 0.5px;
+}
+
+/* Rich checkout items listing */
+.checkout-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.checkout-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.checkout-item img {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+}
+
+.c-item-details {
+    flex: 1;
+}
+
+.c-item-details h5 {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.c-item-details p {
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+.c-item-price {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* Make image grid for map placeholder */
+.map-footer {
+    background-image: radial-gradient(#d5d5d5 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .checkout-card {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .checkout-card {
+        padding: 24px 20px;
+    }
+    .payment-tabs {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .payment-tab {
+        padding: 16px;
+        justify-content: flex-start;
+    }
+    .card-form .flex {
+        flex-direction: column;
+        gap: 0;
+    }
+    .checkout-item img {
+        width: 50px;
+        height: 50px;
+    }
+    .c-item-details h5 {
+        font-size: 0.85rem;
+    }
+}

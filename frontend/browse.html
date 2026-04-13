@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodieHub - Browse Restaurants</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/browse.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="ri-restaurant-2-fill"></i></div>
+            FoodieHub
+        </a>
+        
+        <div class="search-bar">
+            <i class="ri-search-line"></i>
+            <input type="text" placeholder="Search for your favorite meals..." class="search-input">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" class="text-primary font-weight-600">Home</a></li>
+            <li><a href="restaurant.html">Restaurants</a></li>
+            <li><a href="offers.html">Offers</a></li>
+        </ul>
+        
+        <div class="nav-actions">
+            <div class="icon-btn" onclick="window.location.href='checkout.html'"><i class="ri-shopping-cart-2-fill"></i></div>
+            <a href="index.html" class="btn btn-primary" style="padding: 10px 24px;">Sign In</a>
+        </div>
+    </nav>
+
+    <main class="browse-container">
+        <!-- Hero Banner -->
+        <div class="browse-hero">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1400&auto=format&fit=crop" alt="Hero background" class="hero-bg">
+            <div class="hero-content-inner">
+                <h2>Cravings satisfied in 30 mins.</h2>
+                <p>Order from the best local restaurants near you.</p>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="section-header">
+            <h3>Explore Categories</h3>
+            <a href="#" class="view-all text-primary">View All</a>
+        </div>
+        
+        <div class="categories-scroll">
+            <div class="category-item active" data-category="All">
+                <div class="category-icon text-primary bg-secondary" style="font-style: normal;">🍽️</div>
+                <span>All</span>
+            </div>
+            <div class="category-item" data-category="Pizza">
+                <div class="category-icon" style="font-style: normal;">🍕</div>
+                <span>Pizza</span>
+            </div>
+            <div class="category-item" data-category="Burgers">
+                <div class="category-icon" style="font-style: normal;">🍔</div>
+                <span>Burgers</span>
+            </div>
+            <div class="category-item" data-category="Sushi">
+                <div class="category-icon" style="font-style: normal;">🍣</div>
+                <span>Sushi</span>
+            </div>
+            <div class="category-item" data-category="Asian">
+                <div class="category-icon" style="font-style: normal;">🍜</div>
+                <span>Asian</span>
+            </div>
+            <div class="category-item" data-category="Desserts">
+                <div class="category-icon" style="font-style: normal;">🍰</div>
+                <span>Desserts</span>
+            </div>
+            <div class="category-item" data-category="Healthy">
+                <div class="category-icon" style="font-style: normal;">🥗</div>
+                <span>Healthy</span>
+            </div>
+            <div class="category-item" data-category="Drinks">
+                <div class="category-icon" style="font-style: normal;">🥤</div>
+                <span>Drinks</span>
+            </div>
+        </div>
+
+        <!-- Popular Restaurants -->
+        <div class="section-header" style="margin-top: 40px;">
+            <h3>Popular Restaurants Near You</h3>
+            <div class="filter-actions flex gap-3" style="position: relative;">
+                <button id="filterBtn" class="btn btn-outline" style="padding: 8px 16px;">
+                    <i class="ri-filter-3-line" style="margin-right: 8px;"></i>Filter
+                </button>
+                
+                <div id="filterDropdown" class="filter-dropdown" style="display: none;">
+                    <div class="filter-section">
+                        <h4>Minimum Rating</h4>
+                        <div class="filter-options">
+                            <label><input type="radio" name="rating" value="4.5"> 4.5+ ★</label>
+                            <label><input type="radio" name="rating" value="4.0"> 4.0+ ★</label>
+                            <label><input type="radio" name="rating" value="3.5"> 3.5+ ★</label>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <h4>Delivery Time</h4>
+                        <div class="filter-options">
+                            <label><input type="radio" name="delivery" value="30"> Under 30 min</label>
+                            <label><input type="radio" name="delivery" value="45"> Under 45 min</label>
+                            <label><input type="radio" name="delivery" value="60"> Under 1 hour</label>
+                        </div>
+                    </div>
+                    <button id="clearFilters" class="btn btn-outline btn-full" style="margin-top: 10px; font-size: 0.85rem; padding: 6px;">Clear Filters</button>
+                </div>
+
+                <select id="sortSelect" class="sort-select">
+                    <option value="Relevance">Sort by: Relevance</option>
+                    <option value="Rating">Rating: High to Low</option>
+                    <option value="Delivery">Fastest Delivery</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="restaurant-grid">
+            <!-- Card 1 -->
+            <div class="restaurant-card">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=400&auto=format&fit=crop" alt="Pizza" loading="lazy">
+                    <div class="card-badge bg-primary">Free Delivery</div>
+                    <div class="rating-badge"><i class="ri-star-fill text-primary"></i> 4.8</div>
+                </div>
+                <div class="card-content">
+                    <div class="flex justify-between items-center" style="margin-bottom: 8px;">
+                        <h4 class="card-title">Pizza Palace</h4>
+                        <span class="delivery-time">25-35 min</span>
+                    </div>
+                    <p class="card-tags">Italian • Pizzas • Comfort Food</p>
+                    <div class="card-meta">
+                        <span><i class="ri-bike-line"></i> ৳0.00</span>
+                        <span><i class="ri-money-dollar-circle-line"></i> Min. ৳15</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="restaurant-card">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop" alt="Burger">
+                    <div class="rating-badge"><i class="ri-star-fill text-primary"></i> 4.5</div>
+                </div>
+                <div class="card-content">
+                    <div class="flex justify-between items-center" style="margin-bottom: 8px;">
+                        <h4 class="card-title">Burger Blast</h4>
+                        <span class="delivery-time">15-25 min</span>
+                    </div>
+                    <p class="card-tags">American • Burgers • Shakes</p>
+                    <div class="card-meta">
+                        <span><i class="ri-bike-line"></i> ৳2.99</span>
+                        <span><i class="ri-money-dollar-circle-line"></i> Min. ৳10</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="restaurant-card">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=400&auto=format&fit=crop" alt="Sushi">
+                    <div class="rating-badge"><i class="ri-star-fill text-primary"></i> 4.9</div>
+                </div>
+                <div class="card-content">
+                    <div class="flex justify-between items-center" style="margin-bottom: 8px;">
+                        <h4 class="card-title">Zen Sushi</h4>
+                        <span class="delivery-time">30-45 min</span>
+                    </div>
+                    <p class="card-tags">Japanese • Sushi • Healthy</p>
+                    <div class="card-meta">
+                        <span><i class="ri-bike-line"></i> ৳1.50</span>
+                        <span><i class="ri-money-dollar-circle-line"></i> Min. ৳20</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="restaurant-card">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=400&auto=format&fit=crop" alt="Tacos">
+                    <div class="rating-badge"><i class="ri-star-fill text-primary"></i> 4.4</div>
+                </div>
+                <div class="card-content">
+                    <div class="flex justify-between items-center" style="margin-bottom: 8px;">
+                        <h4 class="card-title">Taco Express</h4>
+                        <span class="delivery-time">10-20 min</span>
+                    </div>
+                    <p class="card-tags">Mexican • Street Food • Tacos</p>
+                    <div class="card-meta">
+                        <span><i class="ri-bike-line"></i> ৳0.99</span>
+                        <span><i class="ri-money-dollar-circle-line"></i> Min. ৳5</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="restaurant-card">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=400&auto=format&fit=crop" alt="Salad">
+                    <div class="rating-badge"><i class="ri-star-fill text-primary"></i> 4.7</div>
+                </div>
+                <div class="card-content">
+                    <div class="flex justify-between items-center" style="margin-bottom: 8px;">
+                        <h4 class="card-title">Green Garden</h4>
+                        <span class="delivery-time">20-30 min</span>
+                    </div>
+                    <p class="card-tags">Healthy • Salads • Organic</p>
+                    <div class="card-meta">
+                        <span><i class="ri-bike-line"></i> ৳3.50</span>
+                        <span><i class="ri-money-dollar-circle-line"></i> Min. ৳12</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="restaurant-card">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=400&auto=format&fit=crop" alt="Donuts">
+                    <div class="rating-badge"><i class="ri-star-fill text-primary"></i> 4.6</div>
+                </div>
+                <div class="card-content">
+                    <div class="flex justify-between items-center" style="margin-bottom: 8px;">
+                        <h4 class="card-title">Sweet Haven</h4>
+                        <span class="delivery-time">15-25 min</span>
+                    </div>
+                    <p class="card-tags">Desserts • Bakery • Sweets</p>
+                    <div class="card-meta">
+                        <span><i class="ri-bike-line"></i> ৳2.00</span>
+                        <span><i class="ri-money-dollar-circle-line"></i> Min. ৳8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex justify-center" style="margin-top: 40px; margin-bottom: 60px;">
+            <button class="btn btn-outline text-primary" style="border-color: var(--primary-color);">Load More Restaurants</button>
+        </div>
+
+    </main>
+    <script src="js/api.js"></script>
+    <script src="js/browse.js"></script>
+
+    <!-- Full Website Footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col brand">
+                <h4><i class="ri-restaurant-2-fill text-primary"></i> FoodHub</h4>
+                <p>Bringing your favorite meals straight to your door. Fast, fresh, and perfectly delicious every time.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="browse.html">Browse Restaurants</a></li>
+                    <li><a href="offers.html">Latest Offers</a></li>
+                    <li><a href="#">Ride with Us</a></li>
+                    <li><a href="#">Add your Restaurant</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2026 FoodHub Bangladesh. All Rights Reserved.</div>
+            <div class="footer-social">
+                <a href="#"><i class="ri-facebook-circle-fill"></i></a>
+                <a href="#"><i class="ri-twitter-x-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodieHub - Checkout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/checkout.css">
+    <link rel="stylesheet" href="css/restaurant.css"> <!-- Reusing cart sidebar styles -->
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="ri-restaurant-2-fill"></i></div>
+            FoodieHub
+        </a>
+        
+        <div class="search-bar">
+            <i class="ri-search-line"></i>
+            <input type="text" placeholder="Search for dishes..." class="search-input">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="browse.html">Restaurants</a></li>
+            <li><a href="#">Offers</a></li>
+        </ul>
+        
+        <div class="nav-actions">
+            <div class="icon-btn" onclick="window.location.href='cart.html'"><i class="ri-shopping-cart-2-fill"></i></div>
+            <a href="index.html" class="btn btn-primary" style="padding: 10px 24px;">Sign In</a>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div style="max-width: 1440px; margin: 30px auto 0; padding: 0 40px; color: var(--text-gray); font-size: 0.95rem;">
+        <span class="text-primary">Cart</span> / <span style="font-weight: 600; color: var(--text-dark);">Checkout</span>
+    </div>
+
+    <div class="restaurant-container checkout-container" style="margin-top: 10px;">
+        
+        <!-- Left Column: Forms -->
+        <main class="menu-content">
+            <h1 style="margin-bottom: 30px;">Checkout</h1>
+            
+            <!-- Delivery Address -->
+            <div class="checkout-card">
+                <div class="card-header flex justify-between items-center" style="margin-bottom: 20px;">
+                    <h3 class="flex items-center gap-3"><i class="ri-map-pin-fill text-primary"></i> Delivery Address</h3>
+                    <button id="change-address-btn" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">Change</button>
+                </div>
+                <div class="address-details" style="padding-left: 36px;">
+                    <p style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Home</p>
+                    <p id="address-text" style="color: var(--text-gray); line-height: 1.5; margin-bottom: 8px;">
+                        123 Gourmet Avenue, Gastronomy District<br>
+                        Foodie City, FC 56789
+                    </p>
+                    <p style="color: var(--text-gray);">+880 1711-001234</p>
+                </div>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="checkout-card" style="margin-top: 30px;">
+                <div class="card-header flex items-center gap-3" style="margin-bottom: 24px;">
+                    <i class="ri-wallet-3-fill text-primary" style="font-size: 1.5rem;"></i>
+                    <h3 style="margin: 0;">Payment Method</h3>
+                </div>
+
+                <div class="payment-tabs">
+                    <div class="payment-tab active">
+                        <i class="ri-bank-card-fill" style="color: var(--primary-color);"></i>
+                        <span>Credit/Debit Card</span>
+                        <i class="ri-checkbox-circle-fill check-icon"></i>
+                    </div>
+                    <div class="payment-tab">
+                        <i class="ri-apple-fill" style="font-size: 1.4rem;"></i>
+                        <span>Apple Pay</span>
+                    </div>
+                    <div class="payment-tab">
+                        <i class="ri-google-fill" style="font-size: 1.2rem;"></i>
+                        <span>Google Pay</span>
+                    </div>
+                </div>
+
+                <!-- Card Form -->
+                <form class="card-form">
+                    <div class="form-group">
+                        <label class="form-label">CARDHOLDER NAME</label>
+                        <input type="text" class="form-input checkout-input" value="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">CARD NUMBER</label>
+                        <div class="form-input-wrapper">
+                            <i class="ri-bank-card-line"></i>
+                            <input type="text" class="form-input checkout-input" value="0000 0000 0000 0000">
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="form-group" style="flex: 1;">
+                            <label class="form-label">EXPIRY DATE</label>
+                            <input type="text" class="form-input checkout-input" value="MM/YY">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label class="form-label">CVV</label>
+                            <input type="password" class="form-input checkout-input" value="***">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <!-- Right Column: Order Summary (similar to cart) -->
+        <aside class="cart-sidebar">
+            <div class="cart-container">
+                <h3 style="margin-bottom: 24px; font-size: 1.5rem;">Order Summary</h3>
+
+                <!-- Rich items list for checkout -->
+                <div class="checkout-items">
+                    <div class="checkout-item">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=150&auto=format&fit=crop" alt="Burger">
+                        <div class="c-item-details">
+                            <h5>Truffle Beef Burger</h5>
+                            <p>x1 • Extra Cheese, No Onion</p>
+                        </div>
+                        <div class="c-item-price">৳18.50</div>
+                    </div>
+                    <div class="checkout-item">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=150&auto=format&fit=crop" alt="Salad">
+                        <div class="c-item-details">
+                            <h5>Avocado Super Salad</h5>
+                            <p>x1 • Lemon Vinaigrette</p>
+                        </div>
+                        <div class="c-item-price">৳14.20</div>
+                    </div>
+                    <div class="checkout-item">
+                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=150&auto=format&fit=crop" alt="Cake">
+                        <div class="c-item-details">
+                            <h5>Chocolate Lava Cake</h5>
+                            <p>x1 • With Vanilla Scoop</p>
+                        </div>
+                        <div class="c-item-price">৳8.00</div>
+                    </div>
+                </div>
+
+                <div class="cart-summary" style="margin-top: 30px;">
+                    <div class="summary-line">
+                        <span>Subtotal</span>
+                        <span style="font-weight: 600;">৳40.70</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Delivery Fee</span>
+                        <span style="color: #10B981; font-weight: 500;">Free</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Taxes</span>
+                        <span style="font-weight: 600;">৳3.25</span>
+                    </div>
+                    <div class="summary-line total-line" style="margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--border-color);">
+                        <span>Total</span>
+                        <span class="text-primary" style="font-size: 1.6rem;">৳43.95</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-full checkout-btn" style="padding: 18px; margin-top: 20px;">
+                    Complete Purchase <i class="ri-arrow-right-line" style="margin-left: 8px;"></i>
+                </button>
+                
+                <p class="terms-text" style="line-height: 1.6; margin-top: 16px;">By placing your order, you agree to FoodieHub's <a href="#" style="text-decoration: underline;">Terms of Service</a> and <a href="#" style="text-decoration: underline;">Privacy Policy</a>.</p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Map placeholder footer -->
+    <div class="map-footer" style="background-color: #EFEFEF; padding: 60px 0; text-align: center; margin-top: 80px;">
+        <i class="ri-map-pin-2-fill" style="font-size: 2rem; color: #B0B0B0;"></i>
+        <p style="color: #B0B0B0; font-weight: 600; letter-spacing: 1px; margin-top: 10px; text-transform: uppercase;">Delivering to Foodie City</p>
+    </div>
+    
+    
+
+    <script src="js/api.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/cart-ui.js"></script>
+
+    <!-- Full Website Footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col brand">
+                <h4><i class="ri-restaurant-2-fill text-primary"></i> FoodHub</h4>
+                <p>Bringing your favorite meals straight to your door. Fast, fresh, and perfectly delicious every time.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="browse.html">Browse Restaurants</a></li>
+                    <li><a href="offers.html">Latest Offers</a></li>
+                    <li><a href="#">Ride with Us</a></li>
+                    <li><a href="#">Add your Restaurant</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2026 FoodHub Bangladesh. All Rights Reserved.</div>
+            <div class="footer-social">
+                <a href="#"><i class="ri-facebook-circle-fill"></i></a>
+                <a href="#"><i class="ri-twitter-x-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

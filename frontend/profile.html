@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodieHub - My Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .profile-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 40px;
+            min-height: 60vh;
+        }
+
+        .profile-sidebar {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            align-self: start;
+        }
+
+        .avatar-wrapper {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 4px solid var(--white);
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s;
+        }
+
+        .avatar-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 10px 0;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transform: translateY(100%);
+            transition: all 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .avatar-wrapper:hover .avatar-overlay {
+            transform: translateY(0);
+        }
+        
+        .avatar-wrapper:hover .avatar-img {
+            filter: brightness(0.8);
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .profile-role {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-item h4 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+        
+        .stat-item p {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        .profile-content {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .content-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .content-header h2 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 0px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            transition: all 0.2s ease;
+            background: #fafafa;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(255, 90, 54, 0.1);
+        }
+
+        .form-input.full-width {
+            grid-column: span 2;
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-update {
+            margin-top: 20px;
+            padding: 14px 30px;
+            font-size: 1rem;
+            grid-column: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                grid-template-columns: 1fr;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-input.full-width, .btn-update {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="ri-restaurant-2-fill"></i></div>
+            FoodieHub
+        </a>
+        
+        <div class="search-bar">
+            <i class="ri-search-line"></i>
+            <input type="text" placeholder="Search for your favorite meals..." class="search-input">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="restaurant.html">Restaurants</a></li>
+            <li><a href="offers.html">Offers</a></li>
+            <li><a href="profile.html" class="text-primary font-weight-600">My Profile</a></li>
+        </ul>
+        
+        <div class="nav-actions" id="auth-actions">
+            <div class="icon-btn" onclick="window.location.href='cart.html'"><i class="ri-shopping-cart-2-fill"></i></div>
+            <a href="#" class="btn btn-secondary" onclick="window.api.logout()">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="profile-container">
+        
+        <!-- Sidebar -->
+        <aside class="profile-sidebar">
+            <div class="avatar-wrapper">
+                <img src="" alt="Profile avatar" class="avatar-img" id="avatar-display">
+                <label class="avatar-overlay" for="avatar-upload">
+                    <i class="ri-camera-fill"></i> Change
+                </label>
+                <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
+            </div>
+            
+            <h3 class="profile-name" id="sidebar-name">Loading...</h3>
+            <div class="profile-role" id="sidebar-role">Customer</div>
+            
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <h4>12</h4>
+                    <p>Orders</p>
+                </div>
+                <div class="stat-item">
+                    <h4>3</h4>
+                    <p>Reviews</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Form Area -->
+        <section class="profile-content">
+            <div class="content-header">
+                <h2>Account Information</h2>
+                <p style="color: var(--text-gray); margin-top: 5px;">Update your personal details and contact preferences here.</p>
+            </div>
+            
+            <form id="user-profile-form" class="form-grid">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" id="input-name" class="form-input" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="input-email" class="form-input" required placeholder="john@example.com">
+                </div>
+                <div class="form-group full-width">
+                    <label class="form-label">Phone Number</label>
+                    <input type="text" id="input-phone" class="form-input full-width" placeholder="+880 1711-000000">
+                </div>
+                <div class="form-group full-width">
+                    <label class="form-label">Delivery Address</label>
+                    <textarea id="input-address" class="form-input full-width" placeholder="Dhaka, Bangladesh"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-update">Save Changes</button>
+            </form>
+        </section>
+
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/profile.js"></script>
+
+    <!-- Full Website Footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col brand">
+                <h4><i class="ri-restaurant-2-fill text-primary"></i> FoodHub</h4>
+                <p>Bringing your favorite meals straight to your door. Fast, fresh, and perfectly delicious every time.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="browse.html">Browse Restaurants</a></li>
+                    <li><a href="offers.html">Latest Offers</a></li>
+                    <li><a href="#">Ride with Us</a></li>
+                    <li><a href="#">Add your Restaurant</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2026 FoodHub Bangladesh. All Rights Reserved.</div>
+            <div class="footer-social">
+                <a href="#"><i class="ri-facebook-circle-fill"></i></a>
+                <a href="#"><i class="ri-twitter-x-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

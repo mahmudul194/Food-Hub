@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodieHub - Exclusive Offers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        /* Re-using aesthetic variables from global */
+        .offers-hero {
+            background-color: #FFF3E0;
+            padding: 60px 40px;
+            border-radius: 24px;
+            text-align: center;
+            margin: 40px 20px 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 50px rgba(255,150,0,0.1);
+        }
+
+        .offers-hero h1 {
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .offers-hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .offers-hero p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Abstract Decals */
+        .decal-1, .decal-2 {
+            position: absolute;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            opacity: 0.15;
+        }
+        .decal-1 {
+            width: 300px; height: 300px; top: -100px; left: -50px;
+        }
+        .decal-2 {
+            width: 200px; height: 200px; bottom: -50px; right: 50px;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .offer-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+
+        .offer-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: rgba(255, 90, 54, 0.3);
+        }
+
+        .offer-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+        
+        .offer-card:hover .offer-image {
+            transform: scale(1.05);
+        }
+
+        .offer-img-wrapper {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .offer-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 10px rgba(255, 90, 54, 0.3);
+            z-index: 2;
+        }
+
+        .offer-content {
+            padding: 24px;
+        }
+
+        .offer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .offer-desc {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .offer-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 16px;
+        }
+
+        .offer-code {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            border: 2px dashed rgba(255, 90, 54, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .offer-expiry {
+            font-size: 0.8rem;
+            color: #EF4444; /* red for urgency */
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 600;
+        }
+
+        .copy-btn {
+            background: rgba(255, 90, 54, 0.1);
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            width: 28px;
+            height: 28px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .copy-btn:hover {
+            transform: scale(1.1);
+            background: rgba(255, 90, 54, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="ri-restaurant-2-fill"></i></div>
+            FoodieHub
+        </a>
+        
+        <div class="search-bar" style="visibility: hidden;">
+            <!-- Hidden to align with global nav spacing -->
+            <i class="ri-search-line"></i>
+            <input type="text" placeholder="Search..." class="search-input">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="restaurant.html">Restaurants</a></li>
+            <li><a href="offers.html" class="text-primary font-weight-600">Offers</a></li>
+        </ul>
+        
+        <div class="nav-actions">
+            <div class="icon-btn" onclick="window.location.href='cart.html'"><i class="ri-shopping-cart-2-fill"></i></div>
+            <a href="index.html" class="btn btn-primary" style="padding: 10px 24px;">Sign In</a>
+        </div>
+    </nav>
+
+    <main>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <section class="offers-hero">
+                <div class="decal-1"></div>
+                <div class="decal-2"></div>
+                <h1>Exclusive <span>Deals & Offers</span></h1>
+                <p>Score the best prices on your favorite meals. Apply these codes at checkout to unlock mouthwatering discounts!</p>
+            </section>
+        </div>
+
+        <section class="offers-grid">
+            <!-- Offer 1 -->
+            <div class="offer-card">
+                <div class="offer-img-wrapper">
+                    <span class="offer-badge">50% OFF</span>
+                    <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?q=80&w=800&auto=format&fit=crop" alt="Burger" class="offer-image">
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">New User Mega Deal</h3>
+                    <p class="offer-desc">Enjoy a massive 50% off on your very first order when you sign up with FoodieHub. Applies to any restaurant.</p>
+                    <div class="offer-footer">
+                        <div class="offer-code">
+                            WELCOME50 
+                            <button class="copy-btn" onclick="copyCode('WELCOME50')" title="Copy Code"><i class="ri-file-copy-line"></i></button>
+                        </div>
+                        <div class="offer-expiry"><i class="ri-time-line"></i> Exp 30d</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offer 2 -->
+            <div class="offer-card">
+                <div class="offer-img-wrapper">
+                    <span class="offer-badge">FREE DELIVERY</span>
+                    <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=800&auto=format&fit=crop" alt="Sushi" class="offer-image">
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Sushi Weekend Freebie</h3>
+                    <p class="offer-desc">Satisfy your weekend sushi cravings with zero delivery fees on orders above ৳30. Valid exclusively this weekend.</p>
+                    <div class="offer-footer">
+                        <div class="offer-code">
+                            SUSHIFREE 
+                            <button class="copy-btn" onclick="copyCode('SUSHIFREE')" title="Copy Code"><i class="ri-file-copy-line"></i></button>
+                        </div>
+                        <div class="offer-expiry"><i class="ri-time-line"></i> Exp Sun 11PM</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offer 3 -->
+            <div class="offer-card">
+                <div class="offer-img-wrapper">
+                    <span class="offer-badge">৳10 OFF</span>
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800&auto=format&fit=crop" alt="Pizza" class="offer-image">
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Pizza Party Discount</h3>
+                    <p class="offer-desc">Throwing a party? Get a flat ৳10 off on any Pizza order over ৳40. Minimum order required. Great for groups.</p>
+                    <div class="offer-footer">
+                        <div class="offer-code">
+                            PIZZAPARTY 
+                            <button class="copy-btn" onclick="copyCode('PIZZAPARTY')" title="Copy Code"><i class="ri-file-copy-line"></i></button>
+                        </div>
+                        <div class="offer-expiry"><i class="ri-time-line"></i> Unlimited</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offer 4 -->
+            <div class="offer-card">
+                <div class="offer-img-wrapper">
+                    <span class="offer-badge">BOGO FREE</span>
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop" alt="Burgers" class="offer-image">
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Burger BOGO Special</h3>
+                    <p class="offer-desc">Buy one classic Wagyu Burger and get another one absolutely free! Double the flavor for half the price.</p>
+                    <div class="offer-footer">
+                        <div class="offer-code">
+                            BOGOBURG 
+                            <button class="copy-btn" onclick="copyCode('BOGOBURG')" title="Copy Code"><i class="ri-file-copy-line"></i></button>
+                        </div>
+                        <div class="offer-expiry"><i class="ri-time-line"></i> Exp 7d</div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        function copyCode(code) {
+            navigator.clipboard.writeText(code).then(() => {
+                if(window.toast) {
+                    window.toast.show('Coupon code ' + code + ' copied!', 'success');
+                } else {
+                    alert('Copied to clipboard: ' + code);
+                }
+            }).catch(err => {
+                // Fallback for some browsers if clipboard doesn't work
+                if(window.toast) window.toast.show('Coupon code copied!', 'success');
+            });
+        }
+    </script>
+
+    <!-- Full Website Footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col brand">
+                <h4><i class="ri-restaurant-2-fill text-primary"></i> FoodHub</h4>
+                <p>Bringing your favorite meals straight to your door. Fast, fresh, and perfectly delicious every time.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="browse.html">Browse Restaurants</a></li>
+                    <li><a href="offers.html">Latest Offers</a></li>
+                    <li><a href="#">Ride with Us</a></li>
+                    <li><a href="#">Add your Restaurant</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2026 FoodHub Bangladesh. All Rights Reserved.</div>
+            <div class="footer-social">
+                <a href="#"><i class="ri-facebook-circle-fill"></i></a>
+                <a href="#"><i class="ri-twitter-x-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

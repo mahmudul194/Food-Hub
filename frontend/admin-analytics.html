@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodieHub - Admin Central</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon"><i class="ri-restaurant-2-fill"></i></div>
+                    <div>
+                        <div style="font-size: 1.2rem;">FoodieHub</div>
+                        <div style="font-size: 0.8rem; color: var(--primary-color); font-weight: 500;">Admin Central</div>
+                    </div>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="ri-dashboard-fill text-gray"></i>
+                    <span class="text-gray">Dashboard</span>
+                </a>
+                <a href="admin-orders.html" class="nav-item">
+                    <i class="ri-shopping-bag-3-fill text-gray"></i>
+                    <span class="text-gray">Orders</span>
+                </a>
+                <a href="admin-manage.html" class="nav-item">
+                    <i class="ri-restaurant-line text-gray"></i>
+                    <span class="text-gray">Menu Management</span>
+                </a>
+                <a href="admin-analytics.html" class="nav-item active">
+                    <i class="ri-bar-chart-box-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="admin-users.html" class="nav-item">
+                    <i class="ri-group-line text-gray"></i>
+                    <span class="text-gray">Customers</span>
+                </a>
+                <a href="admin-settings.html" class="nav-item">
+                    <i class="ri-settings-3-line text-gray"></i>
+                    <span class="text-gray">Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="admin-profile">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Admin" style="width:40px; height:40px; border-radius:50%;">
+                    <div>
+                        <div style="font-weight: 600; font-size: 0.95rem;">Alex Chen</div>
+                        <div style="color: var(--text-light); font-size: 0.8rem;">System Admin</div>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-full export-report-btn" style="margin-top: 20px;">
+                    <i class="ri-download-2-line" style="margin-right: 8px;"></i> Export Report
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <h2>Analytics Deep Dive</h2>
+                <div class="nav-actions">
+                    <div class="icon-btn" style="background-color: var(--white);"><i class="ri-notification-3-line"></i></div>
+                    <button onclick="window.api.logout()" class="btn btn-outline" style="border-color:red; color:red; padding: 6px 16px;">Logout</button>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="content-wrapper">
+                
+                <!-- Metrics moved to Dashboard -->
+
+                <!-- Charts Area -->
+                <div class="charts-grid">
+                    <div class="chart-card trend-chart">
+                        <div class="flex justify-between items-center" style="margin-bottom: 30px;">
+                            <div>
+                                <h3 style="font-size: 1.2rem;">Revenue Trend</h3>
+                                <p style="color: var(--text-gray); font-size: 0.9rem;">Monthly performance data</p>
+                            </div>
+                            <div class="time-filters">
+                                <button class="t-filter active">30 Days</button>
+                                <button class="t-filter">90 Days</button>
+                            </div>
+                        </div>
+                        
+                        <!-- SVG Placeholder for curved line chart -->
+                        <div style="height: 250px; position:relative; width: 100%; border-bottom: 1px dashed var(--border-color); display:flex; align-items:flex-end;">
+                           <svg viewBox="0 0 500 200" preserveAspectRatio="none" style="width:100%; height:100%;">
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="rgba(255, 90, 54, 0.4)" />
+                                        <stop offset="100%" stop-color="rgba(255, 90, 54, 0)" />
+                                    </linearGradient>
+                                </defs>
+                                <path d="M0,150 C50,150 100,180 150,130 C200,80 250,80 300,180 C350,280 400,-20 450,50 C480,90 500,120 500,120 L500,200 L0,200 Z" fill="url(#gradient)"/>
+                                <path d="M0,150 C50,150 100,180 150,130 C200,80 250,80 300,180 C350,280 400,-20 450,50 C480,90 500,120 500,120" fill="none" stroke="var(--primary-color)" stroke-width="4"/>
+                           </svg>
+                        </div>
+                        <div class="flex justify-between" style="color: var(--text-light); font-size: 0.8rem; margin-top: 10px;">
+                            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                        </div>
+                    </div>
+
+                    <div class="chart-card volume-chart">
+                        <div style="margin-bottom: 30px;">
+                            <h3 style="font-size: 1.2rem;">Order Volume</h3>
+                            <p style="color: var(--text-gray); font-size: 0.9rem;">Total orders by week</p>
+                        </div>
+                        
+                        <!-- Bar chart placeholder -->
+                        <div class="flex justify-between items-end" style="height: 200px; padding: 0 20px;">
+                            <div style="width: 30px; height: 120px; background-color: var(--border-color); border-radius: 4px;"></div>
+                            <div style="width: 30px; height: 150px; background-color: var(--border-color); border-radius: 4px;"></div>
+                            <div style="width: 30px; height: 100px; background-color: var(--border-color); border-radius: 4px;"></div>
+                            <div style="width: 30px; height: 180px; background-color: var(--text-dark); border-radius: 4px;"></div>
+                        </div>
+                        <div class="flex justify-between" style="color: var(--text-light); font-size: 0.8rem; margin-top: 10px; padding: 0 20px;">
+                            <span>W1</span><span>W2</span><span>W3</span><span>W4</span>
+                        </div>
+
+                        <div class="flex justify-between items-center" style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                            <span style="color: var(--text-gray); font-size: 0.9rem;">Peak Performance</span>
+                            <span style="font-weight: 700;">Week 4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table moved to Dashboard -->
+
+            </div>
+        </main>
+    </div>
+    
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+
+    <!-- Full Website Footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col brand">
+                <h4><i class="ri-restaurant-2-fill text-primary"></i> FoodHub</h4>
+                <p>Bringing your favorite meals straight to your door. Fast, fresh, and perfectly delicious every time.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="browse.html">Browse Restaurants</a></li>
+                    <li><a href="offers.html">Latest Offers</a></li>
+                    <li><a href="#">Ride with Us</a></li>
+                    <li><a href="#">Add your Restaurant</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2026 FoodHub Bangladesh. All Rights Reserved.</div>
+            <div class="footer-social">
+                <a href="#"><i class="ri-facebook-circle-fill"></i></a>
+                <a href="#"><i class="ri-twitter-x-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

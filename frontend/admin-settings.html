@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <style>
+        .settings-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 30px;
+        }
+        .settings-group {
+            margin-bottom: 24px;
+        }
+        .settings-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+        .settings-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .settings-input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 90, 54, 0.1);
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #ccc; transition: .4s; border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px;
+            background-color: white; transition: .4s; border-radius: 50%;
+        }
+        input:checked + .slider { background-color: var(--primary-color); }
+        input:checked + .slider:before { transform: translateX(20px); }
+    </style>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon"><i class="ri-restaurant-2-fill"></i></div>
+                    <div>
+                        <div style="font-size: 1.2rem;">FoodieHub</div>
+                        <div style="font-size: 0.8rem; color: var(--primary-color); font-weight: 500;">Admin Central</div>
+                    </div>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="ri-dashboard-fill text-gray"></i>
+                    <span class="text-gray">Dashboard</span>
+                </a>
+                <a href="admin-orders.html" class="nav-item">
+                    <i class="ri-shopping-bag-3-fill text-gray"></i>
+                    <span class="text-gray">Orders</span>
+                </a>
+                <a href="admin-manage.html" class="nav-item">
+                    <i class="ri-restaurant-line text-gray"></i>
+                    <span class="text-gray">Menu Management</span>
+                </a>
+                <a href="admin-analytics.html" class="nav-item">
+                    <i class="ri-bar-chart-box-line text-gray"></i>
+                    <span class="text-gray">Analytics</span>
+                </a>
+                <a href="admin-users.html" class="nav-item">
+                    <i class="ri-group-line text-gray"></i>
+                    <span class="text-gray">Customers</span>
+                </a>
+                <a href="admin-settings.html" class="nav-item active">
+                    <i class="ri-settings-3-line"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="admin-profile">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Admin" style="width:40px; height:40px; border-radius:50%;">
+                    <div>
+                        <div style="font-weight: 600; font-size: 0.95rem;">Alex Chen</div>
+                        <div style="color: var(--text-light); font-size: 0.8rem;">System Admin</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <h2>Account Settings</h2>
+                <div class="nav-actions">
+                    <div class="icon-btn" style="background-color: var(--white);"><i class="ri-notification-3-line"></i></div>
+                    <button onclick="window.api.logout()" class="btn btn-outline" style="border-color:red; color:red; padding: 6px 16px;">Logout</button>
+                </div>
+            </header>
+
+            <div class="content-wrapper" style="margin-top: 30px; max-width: 800px;">
+                
+                <div class="settings-card">
+                    <h3 style="margin-bottom: 24px; font-size: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">Admin Profile Settings</h3>
+                    <form id="profile-form">
+                        <div class="admin-settings-grid">
+                            <div class="settings-group">
+                                <label class="settings-label">Your Name</label>
+                                <input type="text" id="profile-name" class="settings-input" required>
+                            </div>
+                            <div class="settings-group">
+                                <label class="settings-label">Your Email</label>
+                                <input type="email" id="profile-email" class="settings-input" required>
+                            </div>
+                            <div class="settings-group">
+                                <label class="settings-label">Role</label>
+                                <input type="text" id="profile-role" class="settings-input" disabled style="background:#f3f4f6; cursor:not-allowed;">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-4">Save Profile</button>
+                    </form>
+                </div>
+
+                <div class="settings-card">
+                    <h3 style="margin-bottom: 24px; font-size: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">Notifications & Preferences</h3>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <div>
+                            <div style="font-weight: 600; margin-bottom: 4px;">Email Notifications</div>
+                            <div style="font-size: 0.85rem; color: var(--text-gray);">Receive daily summary reports via email</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <div>
+                            <div style="font-weight: 600; margin-bottom: 4px;">New Order Alerts</div>
+                            <div style="font-size: 0.85rem; color: var(--text-gray);">Play a sound when a new order arrives</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-weight: 600; margin-bottom: 4px;">Maintenance Mode</div>
+                            <div style="font-size: 0.85rem; color: var(--text-gray);">Temporarily disable customer ordering</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/admin-settings.js"></script>
+
+    <!-- Full Website Footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col brand">
+                <h4><i class="ri-restaurant-2-fill text-primary"></i> FoodHub</h4>
+                <p>Bringing your favorite meals straight to your door. Fast, fresh, and perfectly delicious every time.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="browse.html">Browse Restaurants</a></li>
+                    <li><a href="offers.html">Latest Offers</a></li>
+                    <li><a href="#">Ride with Us</a></li>
+                    <li><a href="#">Add your Restaurant</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2026 FoodHub Bangladesh. All Rights Reserved.</div>
+            <div class="footer-social">
+                <a href="#"><i class="ri-facebook-circle-fill"></i></a>
+                <a href="#"><i class="ri-twitter-x-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

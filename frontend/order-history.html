@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodieHub - Order History</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .orders-container { max-width: 800px; margin: 40px auto; padding: 20px; }
+        .order-card { background: white; border-radius: var(--radius-lg); padding: 24px; margin-bottom: 24px; box-shadow: var(--shadow-sm); }
+        .order-header { display: flex; justify-content: space-between; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; }
+        .status-badge { padding: 6px 12px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+        .status-pending { background: #FFF3CD; color: #856404; }
+        .status-preparing { background: #CCE5FF; color: #004085; }
+        .status-out_for_delivery { background: #D4EDDA; color: #155724; }
+        .status-delivered { background: #E2E3E5; color: #383D41; }
+        .o-item { display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo"><div class="logo-icon"><i class="ri-restaurant-2-fill"></i></div>FoodieHub</a>
+        <div class="search-bar"><i class="ri-search-line"></i><input type="text" placeholder="Search orders..." class="search-input"></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="browse.html">Restaurants</a></li>
+            <li><a href="order-history.html" class="text-primary" style="font-weight:600;">My Orders</a></li>
+        </ul>
+        <div class="nav-actions">
+            <div class="icon-btn" onclick="window.location.href='checkout.html'"><i class="ri-shopping-cart-2-fill"></i></div>
+            <div class="icon-btn" onclick="window.location.href='dashboard.html'"><i class="ri-user-line"></i></div>
+        </div>
+    </nav>
+
+    <div class="orders-container">
+        <h2 style="margin-bottom: 30px;">Track Your Orders</h2>
+        <div id="orders-list">
+            <p>Loading your orders...</p>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/order-history.js"></script>
+
+    <!-- Full Website Footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col brand">
+                <h4><i class="ri-restaurant-2-fill text-primary"></i> FoodHub</h4>
+                <p>Bringing your favorite meals straight to your door. Fast, fresh, and perfectly delicious every time.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="browse.html">Browse Restaurants</a></li>
+                    <li><a href="offers.html">Latest Offers</a></li>
+                    <li><a href="#">Ride with Us</a></li>
+                    <li><a href="#">Add your Restaurant</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2026 FoodHub Bangladesh. All Rights Reserved.</div>
+            <div class="footer-social">
+                <a href="#"><i class="ri-facebook-circle-fill"></i></a>
+                <a href="#"><i class="ri-twitter-x-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

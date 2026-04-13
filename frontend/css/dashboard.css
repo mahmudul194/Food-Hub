@@ -1,0 +1,330 @@
+/* Dashboard layout */
+.dashboard-layout {
+    display: flex;
+    height: 100vh;
+    background-color: var(--background-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 280px;
+    background-color: var(--white);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.sidebar-header {
+    padding: 30px;
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+}
+
+.nav-item i {
+    font-size: 1.2rem;
+}
+
+.nav-item.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.nav-item:hover:not(.active) {
+    background-color: var(--background-color);
+}
+
+.sidebar-footer {
+    padding: 30px 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 40px;
+    background-color: var(--background-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    height: 90px;
+}
+
+.sidebar-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+/* Utility for responsive tables */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 20px;
+}
+
+.avatar-text {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.content-wrapper {
+    padding: 0 40px 40px;
+    max-width: 1400px;
+    flex-direction: column;
+}
+
+.admin-settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 1024px) {
+    .content-wrapper {
+        padding: 0 20px 20px;
+        flex-direction: column !important; /* Force stack for side-by-side layouts */
+        gap: 24px !important;
+    }
+    .admin-flex-container {
+        flex-direction: column !important;
+        gap: 24px !important;
+    }
+    .admin-settings-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Metrics Grid */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 30px;
+}
+
+.metric-card {
+    background-color: var(--white);
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.m-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.trend {
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.trend.up {
+    color: #10B981;
+}
+
+.trend.down {
+    color: #EF4444; /* red */
+}
+
+.m-title {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.m-value {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+}
+
+/* Charts Grid */
+.charts-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.chart-card {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.time-filters {
+    display: flex;
+    background-color: var(--background-color);
+    padding: 4px;
+    border-radius: 100px;
+}
+
+.t-filter {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-gray);
+    cursor: pointer;
+}
+
+.t-filter.active {
+    background-color: var(--white);
+    color: var(--text-dark);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Data Table */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th {
+    text-align: left;
+    color: var(--text-light);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table td {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.data-table img {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.status-green {
+    background-color: #D1FAE5;
+    color: #059669;
+}
+
+.status-orange {
+    background-color: #FFEDD5;
+    color: #EA580C;
+}
+
+@media (max-width: 1200px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        position: absolute;
+        left: -280px;
+        height: 100%;
+    }
+    .sidebar.active {
+        left: 0;
+        box-shadow: var(--shadow-md);
+    }
+    .main-content {
+        width: 100%;
+    }
+    .sidebar-toggle {
+        display: block;
+    }
+    .topbar {
+        padding: 20px;
+    }
+    .content-wrapper {
+        padding: 0 20px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    .m-value {
+        font-size: 1.5rem;
+    }
+    .topbar .search-bar {
+        display: none !important; /* Hide secondary search in topbar on mobile */
+    }
+    .topbar h2 {
+        font-size: 1.2rem;
+    }
+    .data-table th, .data-table td {
+        padding: 12px 10px;
+        font-size: 0.85rem;
+    }
+    .main-content {
+        overflow-x: hidden; /* Avoid horizontal body scroll */
+    }
+}
