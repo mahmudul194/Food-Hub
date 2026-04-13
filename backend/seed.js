@@ -5,11 +5,18 @@ require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
 async function seedDB() {
     try {
-        const pool = mysql.createPool({
+        const dbConfig = process.env.DATABASE_URL ? {
+            uri: process.env.DATABASE_URL
+        } : {
             host: process.env.DB_HOST || 'localhost',
             user: process.env.DB_USER || 'root',
             password: process.env.DB_PASSWORD || '',
             database: process.env.DB_NAME || 'foodhub'
+        };
+
+        const pool = mysql.createPool({
+            ...(dbConfig.uri ? { uri: dbConfig.uri } : dbConfig),
+            ssl: { rejectUnauthorized: false }
         });
 
         console.log('Seeding Users...');
