@@ -9,7 +9,7 @@ const morgan = require('morgan');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
 const app = express();
-const PORT = process.env.API_PORT || 5000;
+const PORT = process.env.PORT || process.env.API_PORT || 5000;
 
 // Middleware
 app.use(compression());
