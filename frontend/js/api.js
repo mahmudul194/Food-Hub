@@ -44,7 +44,7 @@ function logout() {
     window.location.href = 'index.html';
 }
 
-// Expose globally
+
 window.api = { fetchAPI, getCurrentUser, setCurrentUser, logout };
 
 // Global UI initializers for Admin layouts
