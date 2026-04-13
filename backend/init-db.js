@@ -4,18 +4,20 @@ require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
 async function initDB() {
     try {
-        // Create connection without database to create it first if necessary
-        const connection = await mysql.createConnection({
+        const dbConfig = process.env.DATABASE_URL ? {
+            uri: process.env.DATABASE_URL
+        } : {
             host: process.env.DB_HOST || 'localhost',
             user: process.env.DB_USER || 'root',
-            password: process.env.DB_PASSWORD || ''
+            password: process.env.DB_PASSWORD || '',
+            database: process.env.DB_NAME || 'foodhub'
+        };
+
+        console.log('Connecting to database...');
+        const connection = await mysql.createConnection({
+            ...(dbConfig.uri ? { uri: dbConfig.uri } : dbConfig),
+            ssl: { rejectUnauthorized: false }
         });
-
-        const dbName = process.env.DB_NAME || 'foodhub';
-
-        console.log(`Creating database ${dbName} if not exists...`);
-        await connection.query(`CREATE DATABASE IF NOT EXISTS \`${dbName}\`;`);
-        await connection.query(`USE \`${dbName}\`;`);
 
         console.log('Creating Users table...');
         await connection.query(`
