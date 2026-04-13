@@ -16,7 +16,10 @@ const pool = mysql.createPool({
     ...(dbConfig.uri ? { uri: dbConfig.uri } : dbConfig),
     waitForConnections: true,
     connectionLimit: 10,
-    queueLimit: 0
+    queueLimit: 0,
+    ssl: {
+        rejectUnauthorized: false // Required for most cloud MySQL providers
+    }
 });
 
 module.exports = pool;
