@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <td>#${order.id}</td>
                     <td>${order.customer_name}</td>
                     <td>${order.restaurant_name}</td>
-                    <td style="font-weight:600; color:var(--primary-color);">$${order.total_amount}</td>
+                    <td style="font-weight:600; color:var(--primary-color);">৳${order.total_amount}</td>
                     <td>${order.payment_method || 'Card'}</td>
                     <td style="font-size: 0.85rem;">${dateForm}</td>
                     <td>
