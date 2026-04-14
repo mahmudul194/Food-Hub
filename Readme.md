@@ -1,8 +1,22 @@
 # 🍔 FoodHub - Full Stack Food Delivery System
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-Online-green)](https://food-hub-ttlc.onrender.com)
+![Database](https://img.shields.io/badge/Database-TiDB%20Cloud-blue)
+![Backend](https://img.shields.io/badge/Backend-Express.js-black)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 FoodHub is a modern full-stack food delivery web application that enables users to explore restaurants, browse menus, and order food seamlessly from the comfort of their homes.
 
 Designed with a clean UI and efficient backend, FoodHub delivers a smooth and user-friendly experience for both customers and administrators.
+
+---
+
+## 🌐 Live Demo
+
+🚀 Experience the live application here:
+👉 **[FoodHub Live](https://food-hub-ttlc.onrender.com)**
+
+> ⚠️ *Note: The server may take a few seconds to start if it has been inactive (Render free tier behavior).*
 
 ---
 
@@ -15,7 +29,6 @@ FoodHub simplifies the food ordering process by combining restaurant discovery, 
 ## 🖼️ UI Preview
 
 ![FoodHub Preview](./assets/preview.png)
-
 
 ---
 
@@ -57,7 +70,27 @@ FoodHub simplifies the food ordering process by combining restaurant discovery, 
 
 ### 🗄️ Database
 
-* MySQL
+* TiDB Cloud (MySQL-compatible)
+
+---
+
+## 📡 Deployment
+
+* **Frontend & Backend:** Render
+* **Database:** TiDB Cloud (Serverless MySQL-compatible database)
+
+---
+
+## 🗄️ Database Details
+
+This project uses **TiDB Cloud**, a scalable distributed SQL database.
+
+### ✨ Why TiDB Cloud?
+
+* ⚡ Serverless & highly scalable
+* 🔄 Fully MySQL compatible
+* 🌍 Cloud-hosted (no local setup needed)
+* 🔐 Reliable and production-ready
 
 ---
 
@@ -110,9 +143,9 @@ Create a `.env` file in the root directory:
 
 ```env
 PORT=3000
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=yourpassword
+DB_HOST=your_tidb_host
+DB_USER=your_tidb_user
+DB_PASSWORD=your_tidb_password
 DB_NAME=foodhub
 JWT_SECRET=your_secret_key
 ```
@@ -121,8 +154,8 @@ JWT_SECRET=your_secret_key
 
 ### 4️⃣ Setup Database
 
-* Create a MySQL database named `foodhub`
-* Import the SQL schema file
+* Create a database in **TiDB Cloud**
+* Import your SQL schema file
 
 ---
 
@@ -161,6 +194,7 @@ http://localhost:3000
 * 🔒 Secure authentication system
 * 🧩 Modular backend architecture
 * 📦 Scalable project structure
+* ☁️ Cloud-based deployment & database
 
 ---
 
@@ -188,7 +222,7 @@ http://localhost:3000
 * 🚀 Successfully Deployed on Render
 * 📱 Fully Responsive Design (Mobile + Desktop)
 * ⚡ Smooth UI/UX with optimized performance
-
+* ☁️ Cloud Database (TiDB Cloud)
 
 ---
 
@@ -207,6 +241,7 @@ Contributions are welcome!
 ## 📄 License
 
 This project is licensed under the **MIT License**.
+See the [LICENSE](./LICENSE) file for details.
 
 ---
 
