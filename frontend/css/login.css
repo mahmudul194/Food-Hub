@@ -208,3 +208,23 @@
     height: 300px;
   }
 }
+
+@media (max-width: 480px) {
+  .login-layout {
+    gap: 24px;
+    margin: 10px auto;
+    padding: 0 16px;
+  }
+  .login-card {
+    padding: 24px;
+  }
+  .social-login-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-image-wrapper {
+    height: 200px;
+  }
+  .hero-image-overlay h3 {
+    font-size: 1.4rem;
+  }
+}

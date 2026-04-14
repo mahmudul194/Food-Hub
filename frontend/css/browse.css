@@ -338,3 +338,18 @@
         height: 180px;
     }
 }
+@media (max-width: 480px) {
+    .browse-container {
+        padding: 0 12px;
+    }
+    .hero-content-inner {
+        left: 16px;
+        width: calc(100% - 32px);
+    }
+    .hero-content-inner h2 {
+        font-size: 1.4rem;
+    }
+    .restaurant-grid {
+        gap: 16px;
+    }
+}

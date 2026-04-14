@@ -47,6 +47,11 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   font-family: var(--font-family);
   background-color: var(--background-color);
@@ -406,9 +411,24 @@ h3 {
 }
 
 @media (max-width: 480px) {
+    .navbar {
+        padding: 0 16px;
+    }
+    .nav-actions {
+        gap: 8px;
+    }
+    .nav-actions .btn {
+        padding: 8px 12px !important;
+        font-size: 0.8rem;
+    }
     .nav-actions .btn-secondary {
         display: none; /* Hide login on very small screens, keep Get Started */
     }
+    .site-footer {
+        padding: 40px 16px 20px 16px;
+    }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
 }
 
 /* ==========================================================================

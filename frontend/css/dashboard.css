@@ -328,3 +328,19 @@
         overflow-x: hidden; /* Avoid horizontal body scroll */
     }
 }
+@media (max-width: 480px) {
+    .topbar {
+        padding: 16px;
+        height: auto;
+        min-height: 70px;
+    }
+    .content-wrapper {
+        padding: 0 12px 24px;
+    }
+    .chart-card {
+        padding: 20px 16px;
+    }
+    .m-value {
+        font-size: 1.3rem;
+    }
+}

@@ -386,3 +386,23 @@
         height: 180px;
     }
 }
+@media (max-width: 480px) {
+    .restaurant-container {
+        padding: 0 12px;
+    }
+    .restaurant-hero {
+        height: 180px;
+    }
+    .restaurant-info {
+        padding: 16px;
+    }
+    .restaurant-info h1 {
+        font-size: 1.5rem;
+    }
+    .restaurant-info .meta {
+        font-size: 0.85rem;
+    }
+    .cart-container {
+        padding: 24px 16px;
+    }
+}
