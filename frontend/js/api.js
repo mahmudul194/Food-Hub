@@ -89,6 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Customer Navigation: Dynamically inject "Order History" and "My Profile"
     const navLinks = document.querySelector('.nav-links');
     if (navLinks && user) {
+        // Remove Home link for logged-in users
+        const homeLink = Array.from(navLinks.querySelectorAll('a')).find(a => 
+            a.textContent.trim().toLowerCase() === 'home' || 
+            a.getAttribute('href') === 'index.html'
+        );
+        if (homeLink) {
+            homeLink.parentElement.remove();
+        }
+
         // Add Order History if missing
         const hasOrders = Array.from(navLinks.querySelectorAll('a')).some(a => a.textContent.includes('Orders'));
         if (!hasOrders) {
