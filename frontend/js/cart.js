@@ -11,7 +11,14 @@ class CartManager {
     }
 
     addToCart(item) {
-        // item: { id, name, price, image_url, restaurant_name }
+        // item: { id, name, price, image_url, restaurant_id }
+        
+        // Safety check: if adding item from a different restaurant, ask or clear (demo: just clear)
+        if (this.cart.length > 0 && this.cart[0].restaurant_id != item.restaurant_id) {
+            console.warn('Switching restaurant, clearing previous cart items');
+            this.cart = [];
+        }
+
         const existingItem = this.cart.find(i => i.id === item.id);
         if (existingItem) {
             existingItem.quantity += 1;
@@ -20,6 +27,8 @@ class CartManager {
         }
         this.saveCart();
         this.triggerUpdate();
+        
+        if (window.toast) window.toast.show('Added to cart!', 'success');
     }
 
     removeFromCart(id) {
@@ -34,7 +43,7 @@ class CartManager {
             if (quantity <= 0) {
                 this.removeFromCart(id);
             } else {
-                item.quantity = quantity;
+                item.quantity = Number(quantity);
                 this.saveCart();
                 this.triggerUpdate();
             }
@@ -49,8 +58,9 @@ class CartManager {
 
     getTotals() {
         const subtotal = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const deliveryFee = subtotal > 0 ? 0 : 0; // Free delivery for demo
-        const taxes = subtotal * 0.08; // 8% tax
+        const deliveryFee = subtotal > 0 ? 0 : 0; 
+        const taxes = subtotal * 0.05; // 5% tax 
+        
         return {
             subtotal: subtotal.toFixed(2),
             deliveryFee: deliveryFee === 0 ? 'Free' : `৳${deliveryFee.toFixed(2)}`,
