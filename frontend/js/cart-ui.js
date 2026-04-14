@@ -7,6 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Initial render
     window.cartManager.triggerUpdate();
 
+    // 3. Pre-fill Checkout Details if logged in
+    const user = window.api.getCurrentUser();
+    if (user && document.title.includes('Checkout')) {
+        const addrText = document.getElementById('address-text');
+        const phoneText = document.getElementById('phone-text');
+        
+        if (addrText) addrText.innerHTML = user.address || '123 Gourmet Avenue, Gastronomy District<br>Foodie City, FC 56789';
+        if (phoneText) phoneText.textContent = user.phone || '+880 1711-001234';
+    }
+
     // Change Address Logic
     const changeAddrBtn = document.getElementById('change-address-btn');
     if (changeAddrBtn) {
