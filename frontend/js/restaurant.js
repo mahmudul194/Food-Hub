@@ -83,15 +83,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Render each category section
         for (const [categoryName, items] of Object.entries(categories)) {
+            const sectionId = 'cat-' + categoryName.toLowerCase().replace(/[^a-z0-9]/g, '-');
+            
             const title = document.createElement('h3');
             title.className = 'section-title';
-            title.id = 'cat-' + categoryName.toLowerCase().replace(/[^a-z0-9]/g, '-');
-            title.textContent = categoryName === 'Pizza' ? 'Pizzas' : (categoryName === 'Pasta' ? 'Pasta Classics' : categoryName);
+            title.id = sectionId;
+            title.textContent = categoryName;
             title.style.marginTop = '40px';
             menuContainer.appendChild(title);
 
             // Determine layout type based on category
-            const isMiniLayout = categoryName === 'Pasta' || categoryName === 'Sides' || categoryName === 'Drinks';
+            const isMiniLayout = categoryName.toLowerCase().includes('drink') || categoryName.toLowerCase().includes('dessert') || categoryName.toLowerCase().includes('side');
             
             const grid = document.createElement('div');
             grid.className = isMiniLayout ? 'mini-menu-grid' : 'menu-grid';
@@ -114,7 +116,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                     `;
                 } else {
                     card.innerHTML = `
-                        <img src="${item.image_url}" alt="${item.name}" class="item-image">
+                        <div class="item-img-container">
+                            <img src="${item.image_url}" alt="${item.name}" class="item-image">
+                        </div>
                         <div class="item-content">
                             <div class="item-header">
                                 <h4>${item.name}</h4>
@@ -131,7 +135,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const btn = card.querySelector('.add-btn');
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    e.stopPropagation();
                     if (window.cartManager) {
                         window.cartManager.addToCart({
                             id: item.id,
@@ -140,13 +143,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                             price: parseFloat(item.price),
                             image_url: item.image_url
                         });
-                    }
-                    if (isMiniLayout) {
-                        this.innerHTML = '<i class="ri-check-line"></i>';
-                        setTimeout(() => this.innerHTML = '<i class="ri-add-line"></i>', 2000);
-                    } else {
-                        this.innerHTML = '<i class="ri-check-line"></i> Added';
-                        setTimeout(() => this.innerHTML = '<i class="ri-add-line"></i> Add to Cart', 2000);
+                        
+                        // Success state icon
+                        const originalHTML = this.innerHTML;
+                        this.innerHTML = isMiniLayout ? '<i class="ri-check-line"></i>' : '<i class="ri-check-line"></i> Added';
+                        this.style.backgroundColor = '#10B981';
+                        this.style.color = 'white';
+                        
+                        setTimeout(() => {
+                            this.innerHTML = originalHTML;
+                            this.style.backgroundColor = '';
+                            this.style.color = '';
+                        }, 2000);
                     }
                 });
 
