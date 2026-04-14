@@ -43,7 +43,7 @@ async function initDB() {
                 rating DECIMAL(3, 1) DEFAULT 0.0,
                 delivery_time VARCHAR(50),
                 min_order DECIMAL(10, 2) DEFAULT 0.00,
-                image_url VARCHAR(255),
+                image_url TEXT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
         `);
@@ -57,7 +57,7 @@ async function initDB() {
                 description TEXT,
                 price DECIMAL(10, 2) NOT NULL,
                 category VARCHAR(50),
-                image_url VARCHAR(255),
+                image_url TEXT,
                 FOREIGN KEY (restaurant_id) REFERENCES Restaurants(id) ON DELETE CASCADE
             );
         `);
