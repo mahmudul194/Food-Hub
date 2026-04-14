@@ -8,9 +8,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Get ID from URL
     const params = new URLSearchParams(window.location.search);
-    const id = params.get('id') || 1; // Default to 1 (Pizza Palace) if no param
+    let id = params.get('id');
 
     try {
+        if (!id) {
+            // Fetch first available restaurant if no ID provided to prevent 404
+            const allRestaurants = await window.api.fetchAPI('/restaurants');
+            if (allRestaurants && allRestaurants.length > 0) {
+                id = allRestaurants[0].id;
+            } else {
+                id = 1;
+            }
+        }
+
         // Fetch restaurant details
         const restaurant = await window.api.fetchAPI(`/restaurants/${id}`);
         
