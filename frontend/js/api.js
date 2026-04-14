@@ -62,6 +62,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (adminNameEl) adminNameEl.textContent = user.name;
         if (adminRoleEl) adminRoleEl.textContent = user.role.charAt(0).toUpperCase() + user.role.slice(1);
         
+        // Update admin sidebar avatar if it exists
+        const sidebarAvatar = document.getElementById('admin-sidebar-avatar');
+        if (sidebarAvatar) {
+            sidebarAvatar.src = user.profile_picture || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=random`;
+        }
+
+        const sidebarName = document.getElementById('admin-sidebar-name');
+        if (sidebarName) sidebarName.textContent = user.name;
+
+        const sidebarRole = document.getElementById('admin-sidebar-role');
+        if (sidebarRole) sidebarRole.textContent = user.role.charAt(0).toUpperCase() + user.role.slice(1);
+        
         if (avatarTextEl) {
             const initials = user.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
             avatarTextEl.textContent = initials;
