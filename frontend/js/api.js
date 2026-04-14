@@ -89,8 +89,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Customer Navigation: Dynamically inject "Order History" and "My Profile"
     const navLinks = document.querySelector('.nav-links');
     if (navLinks && user) {
+        // Find existing links to manage them dynamically
+        const allLinks = Array.from(navLinks.querySelectorAll('a'));
+        const homeLink = allLinks.find(a => a.textContent.trim() === 'Home');
+        const restLink = allLinks.find(a => a.textContent.trim() === 'Restaurants');
+
+        // When logged in, Home should point to browse.html to avoid the landing page redirect flash
+        if (homeLink) {
+            homeLink.href = 'browse.html';
+            // Update active state based on current page
+            const isBrowsePage = window.location.pathname.includes('browse.html') || window.location.pathname.endsWith('/');
+            if (isBrowsePage) {
+                homeLink.classList.add('text-primary', 'font-weight-600');
+                if (restLink) restLink.classList.remove('text-primary', 'font-weight-600');
+            } else {
+                homeLink.classList.remove('text-primary', 'font-weight-600');
+            }
+        }
+
         // Add Order History if missing
-        const hasOrders = Array.from(navLinks.querySelectorAll('a')).some(a => a.textContent.includes('Orders'));
+        const hasOrders = allLinks.some(a => a.textContent.includes('Orders'));
         if (!hasOrders) {
             const isOrdersPage = window.location.pathname.includes('order-history.html');
             const classString = isOrdersPage ? 'class="text-primary font-weight-600"' : '';
@@ -100,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Add Profile if missing
-        const hasProfile = Array.from(navLinks.querySelectorAll('a')).some(a => a.textContent.includes('Profile'));
+        const hasProfile = allLinks.some(a => a.textContent.includes('Profile'));
         if (!hasProfile) {
             const isProfilePage = window.location.pathname.includes('profile.html');
             const classString = isProfilePage ? 'class="text-primary font-weight-600"' : '';
