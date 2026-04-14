@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const url = URL.createObjectURL(blob);
                 const link = document.createElement("a");
                 link.setAttribute("href", url);
-                link.setAttribute("download", `FoodHub_Report_${new Date().toISOString().split('T')[0]}.csv`);
+                link.setAttribute("download", `Food Hub Report - ${new Date().toISOString().split('T')[0]}.csv`);
                 link.style.visibility = 'hidden';
                 document.body.appendChild(link);
                 link.click();
