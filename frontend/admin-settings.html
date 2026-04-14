@@ -102,10 +102,10 @@
 
             <div class="sidebar-footer">
                 <div class="admin-profile">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Admin" style="width:40px; height:40px; border-radius:50%;">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Admin" id="admin-sidebar-avatar" style="width:40px; height:40px; border-radius:50%; object-fit: cover;">
                     <div>
-                        <div style="font-weight: 600; font-size: 0.95rem;">Alex Chen</div>
-                        <div style="color: var(--text-light); font-size: 0.8rem;">System Admin</div>
+                        <div id="admin-sidebar-name" style="font-weight: 600; font-size: 0.95rem;">Loading...</div>
+                        <div id="admin-sidebar-role" style="color: var(--text-light); font-size: 0.8rem;">Admin</div>
                     </div>
                 </div>
             </div>
@@ -126,14 +126,32 @@
                 <div class="settings-card">
                     <h3 style="margin-bottom: 24px; font-size: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">Admin Profile Settings</h3>
                     <form id="profile-form">
-                        <div class="admin-settings-grid">
+                        <div class="profile-header-settings" style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
+                            <div class="avatar-edit-wrapper" style="position: relative; width: 80px; height: 80px; border-radius: 50%; overflow: hidden; border: 3px solid var(--white); box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                                <img src="" alt="Admin Avatar" id="settings-avatar-display" style="width: 100%; height: 100%; object-fit: cover;">
+                                <label for="avatar-upload" style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 0.7rem; padding: 4px 0; text-align: center; cursor: pointer;">
+                                    <i class="ri-camera-line"></i>
+                                </label>
+                                <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
+                            </div>
+                            <div>
+                                <h4 style="margin: 0; font-size: 1.1rem;">Profile Picture</h4>
+                                <p style="margin: 5px 0 0; font-size: 0.85rem; color: var(--text-gray);">Update your account photo</p>
+                            </div>
+                        </div>
+
+                        <div class="admin-settings-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                             <div class="settings-group">
                                 <label class="settings-label">Your Name</label>
-                                <input type="text" id="profile-name" class="settings-input" required>
+                                <input type="text" id="profile-name" class="settings-input" required placeholder="Display Name">
                             </div>
                             <div class="settings-group">
                                 <label class="settings-label">Your Email</label>
-                                <input type="email" id="profile-email" class="settings-input" required>
+                                <input type="email" id="profile-email" class="settings-input" required placeholder="admin@example.com">
+                            </div>
+                            <div class="settings-group">
+                                <label class="settings-label">Phone Number</label>
+                                <input type="text" id="profile-phone" class="settings-input" placeholder="+880 1234...">
                             </div>
                             <div class="settings-group">
                                 <label class="settings-label">Role</label>
@@ -188,11 +206,6 @@
     <script src="js/api.js"></script>
     <script src="js/admin-settings.js"></script>
 
-    <!-- Full Website Footer -->
-    
-
-
-    <!-- Full Website Footer -->
     <footer class="site-footer">
         <div class="footer-grid">
             <div class="footer-col brand">
@@ -238,4 +251,3 @@
 
 </body>
 </html>
-
