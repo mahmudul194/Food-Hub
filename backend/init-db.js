@@ -69,6 +69,7 @@ async function initDB() {
                 status ENUM('pending', 'preparing', 'out_for_delivery', 'delivered', 'cancelled') DEFAULT 'pending',
                 total_amount DECIMAL(10, 2) NOT NULL,
                 delivery_address TEXT NOT NULL,
+                payment_method VARCHAR(50) DEFAULT 'Credit/Debit Card',
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (user_id) REFERENCES Users(id),
                 FOREIGN KEY (restaurant_id) REFERENCES Restaurants(id)
