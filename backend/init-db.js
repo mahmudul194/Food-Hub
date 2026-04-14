@@ -28,6 +28,8 @@ async function initDB() {
                 password_hash VARCHAR(255) NOT NULL,
                 role ENUM('customer', 'admin') DEFAULT 'customer',
                 phone VARCHAR(20),
+                address TEXT,
+                profile_picture LONGTEXT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
         `);
