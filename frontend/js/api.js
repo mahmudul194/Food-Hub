@@ -86,30 +86,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Customer Navigation: Dynamically inject "My Profile"
+    // Customer Navigation: Dynamically inject "Order History" and "My Profile"
     const navLinks = document.querySelector('.nav-links');
     if (navLinks && user) {
-        const hasProfile = Array.from(navLinks.querySelectorAll('a')).some(a => a.textContent === 'My Profile');
+        // Add Order History if missing
+        const hasOrders = Array.from(navLinks.querySelectorAll('a')).some(a => a.textContent.includes('Orders'));
+        if (!hasOrders) {
+            const isOrdersPage = window.location.pathname.includes('order-history.html');
+            const classString = isOrdersPage ? 'class="text-primary font-weight-600"' : '';
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="order-history.html" ${classString}>Orders</a>`;
+            navLinks.appendChild(li);
+        }
+
+        // Add Profile if missing
+        const hasProfile = Array.from(navLinks.querySelectorAll('a')).some(a => a.textContent.includes('Profile'));
         if (!hasProfile) {
             const isProfilePage = window.location.pathname.includes('profile.html');
             const classString = isProfilePage ? 'class="text-primary font-weight-600"' : '';
             const li = document.createElement('li');
-            li.innerHTML = `<a href="profile.html" ${classString}>My Profile</a>`;
+            li.innerHTML = `<a href="profile.html" ${classString}>Profile</a>`;
             navLinks.appendChild(li);
         }
         
-        // Convert 'Sign In' button to 'Logout' globally across generic pages
-        const actionBtn = document.querySelector('.nav-actions .btn');
-        if (actionBtn && actionBtn.textContent.trim() === 'Sign In') {
-            actionBtn.textContent = 'Logout';
-            actionBtn.href = '#';
-            actionBtn.classList.remove('btn-primary');
-            actionBtn.classList.add('btn-danger');
-            actionBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.api.logout();
-            });
-        }
+        // Convert 'Sign In' or 'Get Started' button to 'Logout'
+        const actionBtns = document.querySelectorAll('.nav-actions .btn');
+        actionBtns.forEach(btn => {
+            if (btn.textContent.trim() === 'Sign In' || btn.textContent.trim() === 'Get Started' || btn.textContent.trim() === 'Login') {
+                btn.textContent = 'Logout';
+                btn.href = '#';
+                btn.classList.remove('btn-primary', 'btn-secondary');
+                btn.classList.add('btn-outline');
+                btn.style.borderColor = 'var(--primary-color)';
+                btn.style.color = 'var(--primary-color)';
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.api.logout();
+                });
+            }
+        });
     }
 
     // Handle Mobile Menu (Hamburger)
