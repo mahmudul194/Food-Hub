@@ -184,6 +184,7 @@ app.post('/api/admin/menu', async (req, res) => {
         );
         res.json({ message: 'Menu item added' });
     } catch (err) {
+        console.error('Error adding menu item:', err);
         res.status(500).json({ error: 'Database error' });
     }
 });
