@@ -193,20 +193,6 @@
   font-weight: 600;
 }
 
-/* Footer links */
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  padding: 40px 0;
-  color: var(--text-gray);
-  font-size: 0.9rem;
-}
-
-.footer-links p {
-  color: var(--text-light);
-}
-
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .login-layout {
