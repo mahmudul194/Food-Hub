@@ -1,12 +1,12 @@
-# 🍔 FoodieHub - Full Stack Food Delivery Web App
+# 🍔 Food Hub - Full Stack Food Delivery Web App
 
-FoodieHub is a modern and responsive full-stack food delivery web application that allows users to explore restaurants, browse menus, and order food seamlessly.
+Food Hub is a modern and responsive full-stack food delivery web application that allows users to explore restaurants, browse menus, and order food seamlessly.
 
 ---
 
 ## 🌟 Live Preview
 
-![FoodieHub UI](./assets/preview.png)
+![Food Hub UI](./assets/preview.png)
 
 
 
