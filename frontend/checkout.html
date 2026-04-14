@@ -25,7 +25,7 @@
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="browse.html">Restaurants</a></li>
-            <li><a href="#">Offers</a></li>
+            <li><a href="offers.html">Offers</a></li>
         </ul>
         
         <div class="nav-actions">
@@ -41,7 +41,6 @@
 
     <div class="restaurant-container checkout-container" style="margin-top: 10px;">
         
-        
         <main class="menu-content">
             <h1 style="margin-bottom: 30px;">Checkout</h1>
             
@@ -52,12 +51,11 @@
                     <button id="change-address-btn" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">Change</button>
                 </div>
                 <div class="address-details" style="padding-left: 36px;">
-                    <p style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Home</p>
+                    <p id="address-name" style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Home</p>
                     <p id="address-text" style="color: var(--text-gray); line-height: 1.5; margin-bottom: 8px;">
-                        123 Gourmet Avenue, Gastronomy District<br>
-                        Foodie City, FC 56789
+                        Loading address...
                     </p>
-                    <p style="color: var(--text-gray);">+880 1711-001234</p>
+                    <p id="phone-text" style="color: var(--text-gray);">Loading phone...</p>
                 </div>
             </div>
 
@@ -118,49 +116,11 @@
 
                 <!-- Rich items list for checkout -->
                 <div class="checkout-items">
-                    <div class="checkout-item">
-                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=150&auto=format&fit=crop" alt="Burger">
-                        <div class="c-item-details">
-                            <h5>Truffle Beef Burger</h5>
-                            <p>x1 • Extra Cheese, No Onion</p>
-                        </div>
-                        <div class="c-item-price">৳18.50</div>
-                    </div>
-                    <div class="checkout-item">
-                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=150&auto=format&fit=crop" alt="Salad">
-                        <div class="c-item-details">
-                            <h5>Avocado Super Salad</h5>
-                            <p>x1 • Lemon Vinaigrette</p>
-                        </div>
-                        <div class="c-item-price">৳14.20</div>
-                    </div>
-                    <div class="checkout-item">
-                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=150&auto=format&fit=crop" alt="Cake">
-                        <div class="c-item-details">
-                            <h5>Chocolate Lava Cake</h5>
-                            <p>x1 • With Vanilla Scoop</p>
-                        </div>
-                        <div class="c-item-price">৳8.00</div>
-                    </div>
+                    <!-- Dynamic Items -->
                 </div>
 
                 <div class="cart-summary" style="margin-top: 30px;">
-                    <div class="summary-line">
-                        <span>Subtotal</span>
-                        <span style="font-weight: 600;">৳40.70</span>
-                    </div>
-                    <div class="summary-line">
-                        <span>Delivery Fee</span>
-                        <span style="color: #10B981; font-weight: 500;">Free</span>
-                    </div>
-                    <div class="summary-line">
-                        <span>Taxes</span>
-                        <span style="font-weight: 600;">৳3.25</span>
-                    </div>
-                    <div class="summary-line total-line" style="margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--border-color);">
-                        <span>Total</span>
-                        <span class="text-primary" style="font-size: 1.6rem;">৳43.95</span>
-                    </div>
+                    <!-- Dynamic Totals -->
                 </div>
 
                 <button class="btn btn-primary btn-full checkout-btn" style="padding: 18px; margin-top: 20px;">
@@ -177,16 +137,10 @@
         <i class="ri-map-pin-2-fill" style="font-size: 2rem; color: #B0B0B0;"></i>
         <p style="color: #B0B0B0; font-weight: 600; letter-spacing: 1px; margin-top: 10px; text-transform: uppercase;">Delivering to Foodie City</p>
     </div>
-    
-    
 
     <script src="js/api.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/cart-ui.js"></script>
-
-    <!-- Full Website Footer -->
-    
-
 
     <!-- Full Website Footer -->
     <footer class="site-footer">
@@ -234,4 +188,3 @@
 
 </body>
 </html>
-
