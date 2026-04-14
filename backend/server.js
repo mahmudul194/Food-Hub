@@ -269,5 +269,5 @@ app.put('/api/users/:id', async (req, res) => {
 
 // Start Server
 app.listen(PORT, () => {
-    console.log(`FoodHub backend server running on port ${PORT}`);
+    console.log(`Food Hub backend server running on port ${PORT}`);
 });
