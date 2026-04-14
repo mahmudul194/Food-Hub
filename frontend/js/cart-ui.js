@@ -72,24 +72,26 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cartItemsContainer) {
             cartItemsContainer.innerHTML = '';
             if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p style="color: var(--text-gray); font-size: 0.9rem; text-align: center;">Your cart is empty.</p>';
+                cartItemsContainer.innerHTML = '<div style="padding: 40px 20px; text-align: center;"><i class="ri-shopping-cart-line" style="font-size: 3rem; color: var(--border-color); display: block; margin-bottom: 10px;"></i><p style="color: var(--text-gray); font-size: 0.9rem;">Your cart is empty.</p></div>';
             } else {
                 cart.forEach(item => {
-                    cartItemsContainer.innerHTML += `
-                        <div class="cart-item">
-                            <div class="item-qty">${item.quantity}</div>
-                            <div class="item-name">${item.name}</div>
-                            <div class="item-price">৳${(item.price * item.quantity).toFixed(2)}</div>
-                            <button onclick="window.cartManager.removeFromCart(${item.id})" style="border:none; background:transparent; color: var(--text-light); cursor:pointer; margin-left:8px;"><i class="ri-close-circle-line"></i></button>
-                        </div>
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'cart-item';
+                    itemDiv.innerHTML = `
+                        <div class="item-qty">${item.quantity}</div>
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-price">৳${(item.price * item.quantity).toFixed(2)}</div>
+                        <button class="remove-item" style="border:none; background:transparent; color: var(--text-light); cursor:pointer; margin-left:8px;"><i class="ri-close-circle-line"></i></button>
                     `;
+                    itemDiv.querySelector('.remove-item').onclick = () => window.cartManager.removeFromCart(item.id);
+                    cartItemsContainer.appendChild(itemDiv);
                 });
             }
 
             // Update Subtotal/Total in sidebar
-            const summaryLines = document.querySelector('.cart-summary');
-            if (summaryLines) {
-                 summaryLines.innerHTML = `
+            const summaryContainer = document.querySelector('.cart-summary');
+            if (summaryContainer) {
+                 summaryContainer.innerHTML = `
                     <div class="summary-line">
                         <span>Subtotal</span>
                         <span style="font-weight: 600;">৳${totals.subtotal}</span>
@@ -100,9 +102,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="summary-line total-line">
                         <span>Total</span>
-                        <span class="text-primary" style="font-size: 1.4rem;">৳${totals.subtotal}</span>
+                        <span class="text-primary" style="font-size: 1.4rem;">৳${totals.total}</span>
                     </div>
                  `;
+            }
+
+            // Update Proceed to Checkout button state
+            const sidebarCheckoutBtn = document.querySelector('.cart-sidebar .checkout-btn');
+            if (sidebarCheckoutBtn) {
+                sidebarCheckoutBtn.style.opacity = cart.length === 0 ? '0.5' : '1';
+                sidebarCheckoutBtn.style.pointerEvents = cart.length === 0 ? 'none' : 'auto';
             }
         }
 
@@ -177,21 +186,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 const totals = window.cartManager.getTotals();
                 const activePayment = document.querySelector('.payment-tab.active span')?.innerText || 'Credit/Debit Card';
                 
+                // Get restaurant ID from first item or fallback to 1
+                const restaurantId = window.cartManager.cart[0].restaurant_id || 1;
+
                 await window.api.fetchAPI('/orders', {
                     method: 'POST',
                     body: JSON.stringify({
                         userId: user.id,
-                        restaurantId: window.cartManager.cart[0].restaurant_id || 1,
+                        restaurantId: restaurantId,
                         items: window.cartManager.cart,
                         totalAmount: totals.total,
-                        deliveryAddress: '123 Gourmet Avenue, Foodie City, FC 56789',
+                        deliveryAddress: document.getElementById('address-text')?.innerText || '123 Gourmet Avenue, Foodie City, FC 56789',
                         paymentMethod: activePayment
                     })
                 });
 
                 window.toast.show('Order Placed Successfully! Your delicious meal is on its way. 🚀', 'success');
                 window.cartManager.clearCart();
-                setTimeout(() => window.location.href = 'browse.html', 2000); 
+                setTimeout(() => window.location.href = 'order-history.html', 2000); 
             } catch(err) {
                 window.toast.show('Checkout failed: ' + err.message, 'error');
                 checkoutBtn.innerText = btnOriginalText;
