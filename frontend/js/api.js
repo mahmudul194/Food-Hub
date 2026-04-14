@@ -120,32 +120,48 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.appendChild(li);
         }
 
-        // Add Profile if missing
-        const hasProfile = Array.from(navLinks.querySelectorAll('a')).some(a => a.textContent.includes('Profile'));
-        if (!hasProfile) {
-            const isProfilePage = window.location.pathname.includes('profile.html');
-            const classString = isProfilePage ? 'class="text-primary font-weight-600"' : '';
-            const li = document.createElement('li');
-            li.innerHTML = `<a href="profile.html" ${classString}>Profile</a>`;
-            navLinks.appendChild(li);
-        }
-        
         // Convert 'Sign In' or 'Get Started' button to 'Logout'
-        const actionBtns = document.querySelectorAll('.nav-actions .btn');
+        const navActions = document.querySelector('.nav-actions');
+        const actionBtns = navActions ? navActions.querySelectorAll('.btn') : [];
+        
+        let logoutBtn = null;
         actionBtns.forEach(btn => {
-            if (btn.textContent.trim() === 'Sign In' || btn.textContent.trim() === 'Get Started' || btn.textContent.trim() === 'Login') {
+            if (btn.textContent.trim() === 'Sign In' || btn.textContent.trim() === 'Get Started' || btn.textContent.trim() === 'Login' || btn.textContent.trim() === 'Logout') {
                 btn.textContent = 'Logout';
                 btn.href = '#';
                 btn.classList.remove('btn-primary', 'btn-secondary');
                 btn.classList.add('btn-outline');
-                btn.style.borderColor = 'var(--primary-color)';
-                btn.style.color = 'var(--primary-color)';
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
                     window.api.logout();
                 });
+                logoutBtn = btn;
             }
         });
+
+        // Add Avatar if missing
+        if (navActions && !document.querySelector('.nav-avatar-wrapper')) {
+            const avatarWrapper = document.createElement('div');
+            avatarWrapper.className = 'nav-avatar-wrapper';
+            avatarWrapper.title = 'My Profile';
+            
+            const avatarImg = document.createElement('img');
+            avatarImg.className = 'nav-avatar-img';
+            avatarImg.src = user.profile_picture || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=random`;
+            avatarImg.alt = 'Profile';
+            
+            avatarWrapper.appendChild(avatarImg);
+            avatarWrapper.addEventListener('click', () => {
+                window.location.href = user.role === 'admin' ? 'admin-settings.html' : 'profile.html';
+            });
+            
+            // Append after the logout button
+            if (logoutBtn) {
+                logoutBtn.insertAdjacentElement('afterend', avatarWrapper);
+            } else {
+                navActions.appendChild(avatarWrapper);
+            }
+        }
     }
 
     // Handle Mobile Menu (Hamburger)
