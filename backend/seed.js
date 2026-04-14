@@ -24,7 +24,7 @@ async function seedDB() {
         const hashedAdminPw = await bcrypt.hash('admin123', 10);
         await pool.query(
             `INSERT INTO Users (name, email, password_hash, role) VALUES (?, ?, ?, ?)`,
-            ['Admin User', 'admin@foodiehub.com', hashedAdminPw, 'admin']
+            ['Admin User', 'admin@foodhub.com', hashedAdminPw, 'admin']
         );
         const hashedUserPw = await bcrypt.hash('password123', 10);
         await pool.query(
