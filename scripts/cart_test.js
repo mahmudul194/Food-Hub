@@ -11,7 +11,6 @@ window.api = { getCurrentUser: () => null };
 eval(fs.readFileSync('frontend/js/cart.js', 'utf8'));
 eval(fs.readFileSync('frontend/js/cart-ui.js', 'utf8'));
 
-// manually trigger an add
 window.cartManager.addToCart({ id: 1, name: 'Pizza', price: '14.99' });
 
 console.log(document.querySelector('.cart-items').innerHTML);
