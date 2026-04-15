@@ -15,3 +15,4 @@ eval(fs.readFileSync('frontend/js/cart-ui.js', 'utf8'));
 window.cartManager.addToCart({ id: 1, name: 'Pizza', price: '14.99' });
 
 console.log(document.querySelector('.cart-items').innerHTML);
+
