@@ -9,6 +9,7 @@ class CartManager {
     saveCart() {
         localStorage.setItem(this.cartKey, JSON.stringify(this.cart));
     }
+    
 
     addToCart(item) {
         // item: { id, name, price, image_url, restaurant_id }
