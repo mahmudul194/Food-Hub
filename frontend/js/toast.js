@@ -22,7 +22,7 @@ class ToastNotification {
 
         this.container.appendChild(toast);
 
-        // Trigger animation
+        //trigger animation
         setTimeout(() => {
             toast.classList.add('toast-show');
         }, 10);
