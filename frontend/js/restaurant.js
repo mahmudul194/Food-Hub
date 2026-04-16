@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Swap User Icon for avatar logic or keep avatar
     }
 
-    // Get ID from URL
+    //Get ID from URL
     const params = new URLSearchParams(window.location.search);
     let id = params.get('id');
 
