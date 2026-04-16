@@ -98,5 +98,5 @@ async function initDB() {
         process.exit(1);
     }
 }
-
+// called initDB function.
 initDB();
