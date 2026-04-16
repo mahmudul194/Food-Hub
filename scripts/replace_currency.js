@@ -16,6 +16,7 @@ function walk(dir) {
         }
     });
     return results;
+    //homecoming
 }
 
 const files = walk(path.join(__dirname, 'frontend'));
