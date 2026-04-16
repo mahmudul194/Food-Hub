@@ -32,8 +32,5 @@ async function migrate() {
 }
 // Call migrate function.
 migrate();
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 316177e7624a7478dfaeda99c91b6a4f4e0c2918
