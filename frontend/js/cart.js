@@ -11,8 +11,9 @@ class CartManager {
     }
     
 
+//call add to cart
     addToCart(item) {
-        // item: { id, name, price, image_url, restaurant_id }
+        //item: { id, name, price, image_url, restaurant_id }
         
         // Safety check: if adding item from a different restaurant, ask or clear (demo: just clear)
         if (this.cart.length > 0 && this.cart[0].restaurant_id != item.restaurant_id) {
