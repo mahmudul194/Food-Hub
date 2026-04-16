@@ -33,4 +33,5 @@ async function fix() {
         process.exit(1);
     }
 }
+// called fix function.
 fix();
