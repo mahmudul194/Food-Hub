@@ -8,6 +8,7 @@ const files = [
     'frontend/dashboard.html'
 ];
 let count = 0;
+//count
 files.forEach(f => {
     if (fs.existsSync(f)) {
         let text = fs.readFileSync(f, 'utf8');
