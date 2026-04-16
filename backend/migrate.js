@@ -29,4 +29,5 @@ async function init() {
         process.exit(0);
     }
 }
+// called init function.
 init();
