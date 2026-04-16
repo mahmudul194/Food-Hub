@@ -94,5 +94,5 @@ async function seed() {
         process.exit(1);
     }
 }
-
+// called seed function.
 seed();
