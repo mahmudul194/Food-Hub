@@ -177,3 +177,4 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error("Failed to load restaurant data", err);
     }
 });
+
