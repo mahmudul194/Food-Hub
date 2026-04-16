@@ -58,3 +58,4 @@ function processHtmlFiles(dir) {
 
 processHtmlFiles(path.join(__dirname, '..', 'frontend'));
 console.log('Footer injected successfully.');
+
