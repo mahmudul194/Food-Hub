@@ -42,3 +42,4 @@ class ToastNotification {
 
 // Initialize global toast instance
 window.toast = new ToastNotification();
+
