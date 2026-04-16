@@ -7,6 +7,7 @@ async function addData() {
         console.log('Done'); 
     } catch(e) {
         console.log(e);
+        //printfunction
     }
     process.exit(0); 
 } 
