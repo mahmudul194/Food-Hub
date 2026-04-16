@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // UI Elements
+    //UI Elements
     const avatarDisplay = document.getElementById('avatar-display');
     const avatarUpload = document.getElementById('avatar-upload');
     const sidebarName = document.getElementById('sidebar-name');
