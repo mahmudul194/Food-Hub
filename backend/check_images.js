@@ -30,6 +30,6 @@ async function checkImages() {
         process.exit();
     }
 }
-
+// CheckImages function called.
 checkImages();
 
