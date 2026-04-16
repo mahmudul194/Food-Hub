@@ -55,7 +55,7 @@ function processHtmlFiles(dir) {
         }
     });
 }
-
+//call the process
 processHtmlFiles(path.join(__dirname, '..', 'frontend'));
 console.log('Footer injected successfully.');
 
