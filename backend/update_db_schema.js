@@ -19,5 +19,6 @@ async function updateSchema() {
         process.exit(1);
     }
 }
+// After the process...
 //called updateSchema function.
 updateSchema();
