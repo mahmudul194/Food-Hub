@@ -94,6 +94,7 @@ async function seed() {
         process.exit(1);
     }
 }
+// After the process...
 // called seed function.
 seed();
 
