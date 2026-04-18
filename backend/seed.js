@@ -130,6 +130,7 @@ async function seedDB() {
         process.exit(1);
     }
 }
+// After the process...
 // called seedDB function.
 seedDB();
 
