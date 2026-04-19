@@ -5,7 +5,7 @@ const window = new JSDOM("<body><div class='nav-actions'><div class='icon-btn'><
 global.document = window.document;
 global.window = window;
 global.localStorage = { getItem: () => null, setItem: () => {} };
-//commented
+//done
 window.api = { getCurrentUser: () => null };
 
 eval(fs.readFileSync('frontend/js/cart.js', 'utf8'));
