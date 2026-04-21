@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 menuCatsContainer.appendChild(btn);
                 isFirst = false;
             }
+            
         }
 
         // Render each category section
