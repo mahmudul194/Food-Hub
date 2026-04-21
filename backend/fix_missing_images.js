@@ -33,6 +33,7 @@ async function fix() {
         process.exit(1);
     }
 }
+// After the process...
 // called fix function.
 fix();
 
