@@ -31,6 +31,6 @@ async function checkImages() {
     }
 }
 // After the process...
-// CheckImages function called.
+// CheckImages function called...........
 checkImages();
 

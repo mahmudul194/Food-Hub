@@ -20,5 +20,5 @@ async function updateSchema() {
     }
 }
 // After the process...
-//called updateSchema function.
+//called updateSchema function.......
 updateSchema();
