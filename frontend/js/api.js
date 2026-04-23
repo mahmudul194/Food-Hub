@@ -163,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+    
 
     // Handle Mobile Menu (Hamburger)
     const navbar = document.querySelector('.navbar');
