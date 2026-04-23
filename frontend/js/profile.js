@@ -94,5 +94,62 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.disabled = false;
         }
     });
+
+    // Account Deletion Logic
+    const deleteModal = document.getElementById('delete-modal');
+    const btnDeleteAccount = document.getElementById('btn-delete-account');
+    const btnCancelDelete = document.getElementById('btn-cancel-delete');
+    const btnConfirmDelete = document.getElementById('btn-confirm-delete');
+    const modalCloseIcon = document.getElementById('modal-close-icon');
+
+    const toggleModal = (show) => {
+        if (show) {
+            deleteModal.classList.add('active');
+        } else {
+            deleteModal.classList.remove('active');
+        }
+    };
+
+    if (btnDeleteAccount) {
+        btnDeleteAccount.addEventListener('click', () => toggleModal(true));
+    }
+
+    if (btnCancelDelete) {
+        btnCancelDelete.addEventListener('click', () => toggleModal(false));
+    }
+
+    if (modalCloseIcon) {
+        modalCloseIcon.addEventListener('click', () => toggleModal(false));
+    }
+
+    // Close modal on click outside
+    deleteModal.addEventListener('click', (e) => {
+        if (e.target === deleteModal) toggleModal(false);
+    });
+
+    if (btnConfirmDelete) {
+        btnConfirmDelete.addEventListener('click', async () => {
+            const origText = btnConfirmDelete.textContent;
+            btnConfirmDelete.textContent = 'Deleting Account...';
+            btnConfirmDelete.disabled = true;
+
+            try {
+                await window.api.fetchAPI(`/users/${user.id}`, {
+                    method: 'DELETE'
+                });
+
+                if (window.toast) window.toast.show('Account deleted successfully. We\'re sorry to see you go!', 'success');
+                
+                // Wait for toast to be seen
+                setTimeout(() => {
+                    window.api.logout();
+                }, 2000);
+            } catch (error) {
+                if (window.toast) window.toast.show(error.message || 'Failed to delete account', 'error');
+                btnConfirmDelete.textContent = origText;
+                btnConfirmDelete.disabled = false;
+            }
+        });
+    }
 });
 
