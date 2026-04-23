@@ -270,16 +270,36 @@
                 
                 <button type="submit" class="btn btn-primary btn-update">Save Changes</button>
             </form>
+
+            <!-- Danger Zone -->
+            <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border-color);">
+                <h3 style="color: #ef4444; margin-bottom: 10px;">Danger Zone</h3>
+                <p style="color: var(--text-gray); margin-bottom: 20px; font-size: 0.95rem;">Once you delete your account, there is no going back. Please be certain.</p>
+                <button type="button" class="btn btn-danger" id="btn-delete-account">Delete Account</button>
+            </div>
         </section>
 
     </main>
 
+    <!-- Delete Account Confirmation Modal -->
+    <div class="modal-overlay" id="delete-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Delete Account?</h3>
+                <div class="modal-close" id="modal-close-icon"><i class="ri-close-line"></i></div>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete your account? This action is <strong>irreversible</strong> and will totally delete all your data from our database.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="btn-cancel-delete">Cancel</button>
+                <button class="btn btn-danger" id="btn-confirm-delete">Yes, Delete My Account</button>
+            </div>
+        </div>
+    </div>
+
     <script src="js/api.js"></script>
     <script src="js/profile.js"></script>
-
-    <!-- Full Website Footer -->
-    
-
 
     <!-- Full Website Footer -->
     <footer class="site-footer">
@@ -327,4 +347,3 @@
 
 </body>
 </html>
-
