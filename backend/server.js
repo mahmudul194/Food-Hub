@@ -268,6 +268,16 @@ app.put('/api/users/:id', async (req, res) => {
         res.status(500).json({ error: 'Database error' });
     }
 });
+
+app.delete('/api/users/:id', async (req, res) => {
+    try {
+        await db.query('DELETE FROM Users WHERE id = ?', [req.params.id]);
+        res.json({ message: 'Account deleted successfully' });
+    } catch (err) {
+        console.error("Account deletion error:", err);
+        res.status(500).json({ error: 'Database error' });
+    }
+});
 // After that..............;
 // Start Server........
 app.listen(PORT, () => {
