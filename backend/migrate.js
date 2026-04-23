@@ -30,6 +30,6 @@ async function init() {
     }
 }
 // After the process.............
-// called init function.
+// called init function.........
 init();
 

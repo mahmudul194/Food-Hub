@@ -17,7 +17,7 @@ files.forEach(f => {
     if (fs.existsSync(fullPath)) {
         let content = fs.readFileSync(fullPath, 'utf8');
         
-        //Remove existing variants of the button to avoid duplicates
+        //remove existing variants of the button to avoid duplicates
         content = content.replace(/<button class="btn btn-primary btn-full".*?>\s*<i class="ri-download-2-line".*?<\/i>\s*Export Report\s*<\/button>/g, '');
         content = content.replace(/<button class="btn btn-primary btn-full export-report-btn".*?>\s*<i class="ri-download-2-line".*?<\/i>\s*Export Report\s*<\/button>/g, '');
         
