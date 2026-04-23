@@ -2,7 +2,7 @@ const mysql = require('mysql2/promise');
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '../../.env') });
 
-// Database configuration
+// Database configuration...
 const dbConfig = process.env.DATABASE_URL || process.env.DB_URL ? {
     uri: process.env.DATABASE_URL || process.env.DB_URL
 } : {
