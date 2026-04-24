@@ -30,8 +30,8 @@ async function migrate() {
         process.exit(1);
     }
 }
-// After process .................;
-// Call migrate function.
+// After process .........................;
+// Call migrate function..........
 migrate();
 
 
