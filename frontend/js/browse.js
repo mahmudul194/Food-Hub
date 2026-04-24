@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+    
     function sortRestaurants(list) {
         if (filterState.sortBy === 'Rating') {
             return [...list].sort((a, b) => b.rating - a.rating);
