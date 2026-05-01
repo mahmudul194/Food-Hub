@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         grid.innerHTML = `<p style="color:red; grid-column: 1/-1; text-align: center;">Error loading restaurants: ${err.message}</p>`;
     }
 
+    
     // --- Filter UI interaction ---
     const filterBtn = document.getElementById('filterBtn');
     const filterDropdown = document.getElementById('filterDropdown');
